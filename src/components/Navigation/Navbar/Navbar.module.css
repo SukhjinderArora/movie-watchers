@@ -1,0 +1,32 @@
+.Navbar {
+  display: flex;
+  height: 7rem;
+  align-items: center;
+  padding: 0 3rem;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.Logo {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: #3e3d3d;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.NavList {
+  display: flex;
+  list-style: none;
+  font-size: 1.6rem;
+}
+
+.NavItem {
+  margin-left: 1rem;
+  color: rgba(0,0,0,.7);
+}
+
+.NavLink {
+  color: rgba(0,0,0,.7);
+}

@@ -1,0 +1,48 @@
+.Carousel {
+  position: relative;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 2.2rem;
+  color: #212121;
+  padding: 2rem 0 .5rem;
+  line-height: 2;
+  margin-left: 1rem;
+}
+
+.slideChangeBtn {
+  background: none;
+  border: 0;
+  width: 5rem;
+  height: 5rem;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.slideChangeBtn:hover {
+  transform: scale(1.1);
+}
+
+.slideChangeBtn:focus {
+  outline: 0;
+}
+
+.btnLeft {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+}
+
+.btnRight {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.arrow {
+  width: 5rem;
+  opacity: .9;
+}
