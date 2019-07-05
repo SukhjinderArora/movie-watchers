@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 import classes from './Card.module.css';
 import starRatingIcon from '../../../assets/images/star.svg';
@@ -15,26 +16,29 @@ class Card extends Component {
   };
 
   render() {
+    const { data } = this.props;
     let placeHolderDiv = [classes.ImagePlaceHolder];
     if(this.state.imageLoaded) {
       placeHolderDiv.push(classes.ImageLoaded);
     }
-    let releaseDate;
+    let releaseDate, path, regex = /\s/g;
 
-    if(this.props.data.release_date) {
+    if(data.release_date) {
       releaseDate = (
         <>
           <span>Release Date:</span>
-          <span>{this.props.data.release_date}</span>
+          <span>{data.release_date}</span>
         </>
       );
+      path = `/movie/${data.title.replace(regex, '-')}/${data.id}`;
     } else {
       releaseDate = (
         <>
           <span>First air date:</span>
-          <span>{this.props.data.first_air_date}</span>
+          <span>{data.first_air_date}</span>
         </>
       );
+      path = `/tv/${data.name.replace(regex, '-')}/${data.id}`;
     }
          
     return (
@@ -46,19 +50,20 @@ class Card extends Component {
           onLoad={this.onImageLoad} />
         <div className={placeHolderDiv.join(' ')}></div>
         <div className={classes.Content}>
-          <h1 className={classes.Title}>{this.props.data.title ? this.props.data.title : this.props.data.name}</h1>
+          <h1 className={classes.Title}>{data.title ? data.title : data.name}</h1>
           <div>
             <p className={classes.Rating}>
               <span>Rating:</span>
               <span>
-                <span>{this.props.data.vote_average}/10</span>
+                <span>{data.vote_average}/10</span>
                 <img src={starRatingIcon} alt="Rating icon" className={classes.RatingIcon} />
               </span>
             </p>
             <p className={classes.ReleaseDate}>
               {releaseDate}
             </p>
-            <button className={classes.DetailBtn}>Details</button>
+            <Link to={path} className={classes.DetailBtn}>Details</Link>
+            {/* <button className={classes.DetailBtn}>Details</button> */}
           </div>
         </div>
       </div>

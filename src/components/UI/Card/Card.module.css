@@ -11,6 +11,7 @@
 .Poster {
   display: block;
   width: 100%;
+  height: 45rem;
   border-radius: 1rem;
 }
 
@@ -26,6 +27,12 @@
   height: 0;
   opacity: 0;
   transition: height .4s, opacity .7s, background .7s;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
 }
 
 .Card:hover .Content {
@@ -37,7 +44,6 @@
 .ImagePlaceHolder {
   position: absolute;
   width: 30rem;
-  height: 45rem;
   border-radius: 1rem;
   background: rgb(235, 235, 235);
   animation: placeHolderAnimation 1s linear infinite alternate;
@@ -61,15 +67,6 @@
   opacity: 0;
   height: 0;
   width: 0;
-}
-
-.Content {
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
 }
 
 .Title {
@@ -102,6 +99,9 @@
 }
 
 .DetailBtn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
   background: #4FBA6F;
   border: 0;
   color: #fff;

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
+import { Route, Switch } from 'react-router-dom';
 
 import Layout from './containers/Layout/Layout';
 import * as configActions from './store/actions/configActions';
 import * as genreActions from './store/actions/genreActions';
+import ShowDetails from './containers/ShowDetails/ShowDetails';
 
 class App extends Component {
   componentDidMount() {
@@ -15,7 +17,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Layout />
+        <Switch>
+          <Route path="/movie/:title/:id" component={ShowDetails}/>
+          <Route path="/tv/:title/:id" component={ShowDetails}/>
+          <Route path="/" exact component={Layout} />
+          <Route render={() => <h1>404 Page Not Found!</h1>}/>
+        </Switch>
       </div>
     );
   }

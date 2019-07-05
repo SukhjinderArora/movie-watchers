@@ -4,6 +4,7 @@ const initialState = {
   genres: null,
   popularMovies: null,
   topRatedMovies: null,
+  movie: null,
   error: null
 };
 
@@ -25,6 +26,13 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         topRatedMovies: action.data,
+        error: null
+      };
+    case actionTypes.GET_MOVIE_DETAILS:
+      console.log(action.data)
+      return {
+        ...state,
+        movie: action.data,
         error: null
       };
     case actionTypes.ERROR:

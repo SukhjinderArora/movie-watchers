@@ -6,7 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import Carousel from '../../components/UI/Carousel/Carousel';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-import withPath from '../../hoc/withPath';
+import withData from '../../hoc/withData';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 import { getDataAsync } from '../../store/actions/dataActions';
@@ -24,23 +24,23 @@ class Layout extends Component {
   }
 
   render() {
-    const PopularMovies = withPath(Carousel, {
+    const PopularMovies = withData(Carousel, {
       title: 'Popular Movies',
       data: this.props.popularMovies
     });
-    const TopRatedMovies = withPath(Carousel, {
+    const TopRatedMovies = withData(Carousel, {
       title: 'Top Rated Movies',
       data: this.props.topRatedMovies
     });
-    const PopularTV = withPath(Carousel, {
+    const PopularTV = withData(Carousel, {
       title: 'Popular TV',
       data: this.props.popularTV
     });
-    const TopRatedTV = withPath(Carousel, {
+    const TopRatedTV = withData(Carousel, {
       title: 'Top Rated TV',
       data: this.props.topRatedTV
     });
-    const Trending = withPath(Carousel, {
+    const Trending = withData(Carousel, {
       title: 'Trending this Week',
       data: this.props.trending
     })

@@ -6,7 +6,7 @@ import { base_img_url } from '../../../config';
 
 class Grid extends Component {
   render() {
-    const imageUrl = base_img_url + 'w185/';
+    const imageUrl = base_img_url + 'w300';
     const data = this.props.data.data.map(data => {
       return <Card imgUrl={imageUrl + data.poster_path} key={data.id} />
     });

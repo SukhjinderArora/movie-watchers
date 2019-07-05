@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const withPath = (WrappedComponent, data) => {
+const withData = (WrappedComponent, data) => {
   return class extends Component {
     render() {
       return (
@@ -10,4 +10,4 @@ const withPath = (WrappedComponent, data) => {
   };
 }
 
-export default withPath;
+export default withData;

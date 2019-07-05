@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import rootReducer from './store/reducers/rootReducer';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, /* preloadedState, */ composeEnhancers(
@@ -16,7 +17,9 @@ const store = createStore(rootReducer, /* preloadedState, */ composeEnhancers(
 
 const app = (
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
 );
 

@@ -4,6 +4,7 @@ const initialState = {
   genres: null,
   popularTV: null,
   topRatedTV: null,
+  show: null,
   error: null
 };
 
@@ -25,6 +26,12 @@ const tvReducer = (state = initialState, action) => {
       return {
         ...state,
         topRatedTV: action.data,
+        error: null
+      };
+    case actionTypes.GET_TV_DETAILS:
+      return {
+        ...state,
+        show: action.data,
         error: null
       };
     case actionTypes.ERROR:
