@@ -14,7 +14,7 @@ export const getMovieGenresAsync = () => {
   return dispatch => {
     axios.get(config.base_url + '/genre/movie/list?api_key=' + config.API_KEY)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         dispatch(getMovieGenres(res.data));
       })
       .catch(err => {
@@ -34,7 +34,6 @@ export const getTVGenresAsync = () => {
   return dispatch => {
     axios.get(config.base_url + '/genre/tv/list?api_key=' + config.API_KEY)
       .then(res => {
-        console.log(res.data);
         dispatch(getTVGenres(res.data));
       })
       .catch(err => {

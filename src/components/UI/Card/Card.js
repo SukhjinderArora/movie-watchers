@@ -16,13 +16,14 @@ class Card extends Component {
   };
 
   render() {
+    let releaseDate, path, regex = /\s/g;
     const { data } = this.props;
-    let placeHolderDiv = [classes.ImagePlaceHolder];
+    const placeHolderDiv = [classes.ImagePlaceHolder];
+
     if(this.state.imageLoaded) {
       placeHolderDiv.push(classes.ImageLoaded);
     }
-    let releaseDate, path, regex = /\s/g;
-
+    
     if(data.release_date) {
       releaseDate = (
         <>
@@ -45,7 +46,7 @@ class Card extends Component {
       <div className={classes.Card} onDragStart={this.props.onDragStart}>
         <img 
           src={this.props.imgUrl}
-          alt="tv-movie" 
+          alt="Poster" 
           className={classes.Poster}
           onLoad={this.onImageLoad} />
         <div className={placeHolderDiv.join(' ')}></div>
@@ -63,7 +64,6 @@ class Card extends Component {
               {releaseDate}
             </p>
             <Link to={path} className={classes.DetailBtn}>Details</Link>
-            {/* <button className={classes.DetailBtn}>Details</button> */}
           </div>
         </div>
       </div>

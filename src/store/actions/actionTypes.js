@@ -5,11 +5,13 @@ export const GET_TV_GENRES = 'GET_TV_GENRES';
 export const GET_POPULAR_MOVIES = 'GET_POPULAR_MOVIES';
 export const GET_TOP_RATED_MOVIES = 'GET_TOP_RATED_MOVIES';
 export const GET_MOVIE_DETAILS = 'GET_MOVIE_DETAILS';
+export const CLEAR_MOVIE_DATA = 'CLEAR_MOVIE_DATA';
 
 
 export const GET_POPULAR_TV = 'GET_POPULAR_TV';
 export const GET_TOP_RATED_TV = 'GET_TOP_RATED_TV';
 export const GET_TV_DETAILS = 'GET_TV_DETAILS';
+export const CLEAR_TV_DATA = 'CLEAR_TV_DATA';
 
 export const GET_TRENDING = 'GET_TRENDING';
 

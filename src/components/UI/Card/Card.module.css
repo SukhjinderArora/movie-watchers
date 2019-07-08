@@ -1,6 +1,6 @@
 .Card {
   min-width: 30rem;
-  min-height: 45rem;
+  height: 45rem;
   overflow: hidden;
   cursor: pointer;
   position: relative;
@@ -11,11 +11,17 @@
 .Poster {
   display: block;
   width: 100%;
-  height: 45rem;
+  height: 100%;
   border-radius: 1rem;
 }
 
 .Content {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -27,12 +33,6 @@
   height: 0;
   opacity: 0;
   transition: height .4s, opacity .7s, background .7s;
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
 }
 
 .Card:hover .Content {
@@ -44,6 +44,7 @@
 .ImagePlaceHolder {
   position: absolute;
   width: 30rem;
+  height: 45rem;
   border-radius: 1rem;
   background: rgb(235, 235, 235);
   animation: placeHolderAnimation 1s linear infinite alternate;
@@ -100,13 +101,13 @@
 
 .DetailBtn {
   display: block;
-  text-align: center;
-  text-decoration: none;
   background: #4FBA6F;
   border: 0;
   color: #fff;
   width: 100%;
   padding: 1rem 5rem;
+  text-decoration: none;
+  text-align: center;
   font-family: inherit;
   font-size: 1.8rem;
   letter-spacing: 1px;

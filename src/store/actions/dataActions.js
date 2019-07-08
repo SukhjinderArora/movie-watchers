@@ -10,6 +10,12 @@ const getData = (actionType, data) => {
   };
 };
 
+export const clearData = (actionType) => {
+  return {
+    type: actionType
+  };
+};
+
 const getError = (error) => {
   return {
     type: actionTypes.ERROR,
@@ -17,12 +23,12 @@ const getError = (error) => {
   };
 };
 
-export const getDataAsync = (path, actionType) => {
+export const getDataAsync = (path, actionType, appendToResponse = '') => {
   return async dispatch => {
     try {
-      const response = await axios.get(`${base_url}${path}?api_key=${API_KEY}`);
+      const url = `${base_url}${path}?api_key=${API_KEY}${appendToResponse}`;
+      const response = await axios.get(url);
       dispatch(getData(actionType, response.data));
-      console.log(response.data)
     } catch(error) {
       console.log(error.message);
       dispatch(getError(error.message));

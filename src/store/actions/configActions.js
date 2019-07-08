@@ -14,7 +14,7 @@ export const getConfigAsync = () => {
   return dispatch => {
     axios.get(config.base_url + '/configuration?api_key=' + config.API_KEY)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         dispatch(getConfig(res.data));
       })
       .catch(err => {

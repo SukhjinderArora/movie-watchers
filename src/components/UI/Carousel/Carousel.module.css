@@ -33,7 +33,7 @@
 .btnLeft {
   position: absolute;
   top: 50%;
-  left: 1rem;
+  left: 0;
 }
 
 .btnRight {

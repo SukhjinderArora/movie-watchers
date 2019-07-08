@@ -28,6 +28,12 @@ const tvReducer = (state = initialState, action) => {
         topRatedTV: action.data,
         error: null
       };
+    case actionTypes.CLEAR_TV_DATA:
+      return {
+        ...state,
+        show: null,
+        error: null
+      };
     case actionTypes.GET_TV_DETAILS:
       return {
         ...state,

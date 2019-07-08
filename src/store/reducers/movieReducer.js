@@ -28,8 +28,13 @@ const movieReducer = (state = initialState, action) => {
         topRatedMovies: action.data,
         error: null
       };
+    case actionTypes.CLEAR_MOVIE_DATA:
+      return {
+        ...state,
+        movie: null,
+        error: null
+      };
     case actionTypes.GET_MOVIE_DETAILS:
-      console.log(action.data)
       return {
         ...state,
         movie: action.data,

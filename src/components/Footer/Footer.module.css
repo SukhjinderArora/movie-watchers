@@ -1,7 +1,6 @@
 .Footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 5rem;
   padding: 2rem 6rem;
   background: rgba(245, 245, 245, 0.6);
   border-top: 1px solid rgba(218, 218, 218, 0.4);
