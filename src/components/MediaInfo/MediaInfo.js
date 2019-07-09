@@ -27,25 +27,42 @@ const MediaInfo = (props) => {
     );
   });
 
-  let cast;
-  if(castArray.length < 6) {
+  let cast = null;
+  if (castArray.length > 0 && castArray.length <= 5) {
     cast = (
       <div className={classes.castContainer}>
         <h2 className={classes.title}>Cast</h2>
         {castArray}
       </div>
     );
-  } else {
+  } else if(castArray.length >= 6) {
     const responsive = { 
       0: { items: 1 },
       767: { items: 2 }, 
       1023: { items: 3 }, 
       1200: { items: 7 } 
     };
-    cast = <Carousel 
-              title="Cast" 
-              data={castArray} 
-              responsive={responsive}/>;
+    cast = (
+      <Carousel 
+        title="Cast" 
+        data={castArray} 
+        responsive={responsive}/>
+    );
+  }
+
+  let video = null;
+  if(data.videoKey) {
+    video = (
+      <div className={classes.videoContainer}>
+        <h2 className={classes.trailer}>Trailer</h2>
+        <iframe className={classes.video}
+          allowFullScreen
+          frameBorder="0"
+          title="Trailer"
+          src={`https://www.youtube.com/embed/${data.videoKey}`}>
+        </iframe>
+      </div>
+    );
   }
 
   const recommendations = data.recommendations.map(dataItem => {
@@ -74,15 +91,7 @@ const MediaInfo = (props) => {
         </div>
       </div>
       {cast}
-      <div className={classes.videoContainer}>
-        <h2 className={classes.trailer}>Trailer</h2>
-        <iframe className={classes.video}
-          allowFullScreen
-          frameBorder="0"
-          title="Trailer"
-          src={data.videoPath}>
-        </iframe>
-      </div>
+      {video}
       <Carousel title="Recommendations" data={recommendations} responsive={responsive} />
     </div>
   );

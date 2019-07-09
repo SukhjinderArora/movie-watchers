@@ -36,7 +36,7 @@ class TV extends Component {
       overview: tv.overview,
       posterPath: tv.poster_path,
       cast: tv.credits.cast,
-      videoPath: ` https://www.youtube.com/embed/${tv.videos.results[0].key}`,
+      videoKey: tv.videos.results[0] ? tv.videos.results[0].key : null,
       recommendations: tv.recommendations.results,
       other: [
         { name: 'Tagline', value: tv.tagline },

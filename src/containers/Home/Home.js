@@ -10,14 +10,6 @@ import { base_img_url } from '../../config';
 import classes from './Home.module.css';
 
 class Home extends Component {
-  state = {
-    responsive: {
-      0: { items: 1 },
-      767: { items: 2 },
-      1023: { items: 3 },
-      1200: { items: 4 }
-    }
-  };
 
   transformData = (data) => {
     const imageUrl = base_img_url + 'w300/';
@@ -32,28 +24,36 @@ class Home extends Component {
 
   render() {
     if(this.props.loading) return <Spinner />;
+
+    const responsive = {
+      0: { items: 1 },
+      767: { items: 2 },
+      1023: { items: 3 },
+      1200: { items: 4 }
+    };
+
     return (
       <div className={classes.Container}>
         <Carousel 
           title="Popular Movies" 
           data={this.transformData(this.props.popularMovies)} 
-          responsive={this.state.responsive}/>
+          responsive={responsive}/>
         <Carousel
           title="Popular TV"
           data={this.transformData(this.props.popularTV)}
-          responsive={this.state.responsive} />
+          responsive={responsive} />
         <Carousel
           title="Trending this Week"
           data={this.transformData(this.props.trending)}
-          responsive={this.state.responsive} />
+          responsive={responsive} />
         <Carousel 
           title="Top Rated Movies" 
           data={this.transformData(this.props.topRatedMovies)} 
-          responsive={this.state.responsive}/>
+          responsive={responsive}/>
         <Carousel 
           title="Top Rated TV" 
           data={this.transformData(this.props.topRatedTV)} 
-          responsive={this.state.responsive}/>
+          responsive={responsive}/>
         </div>
     );
   }

@@ -37,7 +37,7 @@ class Movie extends Component {
       overview: movie.overview,
       posterPath: movie.poster_path,
       cast: movie.credits.cast,
-      videoPath: ` https://www.youtube.com/embed/${movie.videos.results[0].key}`,
+      videoKey: movie.videos.results[0] ? movie.videos.results[0].key : null,
       recommendations: movie.recommendations.results,
       other: [
         { name: 'Tagline', value: movie.tagline },

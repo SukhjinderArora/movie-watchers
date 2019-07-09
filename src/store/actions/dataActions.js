@@ -28,6 +28,7 @@ export const getDataAsync = (path, actionType, appendToResponse = '') => {
     try {
       const url = `${base_url}${path}?api_key=${API_KEY}${appendToResponse}`;
       const response = await axios.get(url);
+      console.log(response.data)
       dispatch(getData(actionType, response.data));
     } catch(error) {
       console.log(error.message);

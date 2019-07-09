@@ -1,11 +1,10 @@
 .Card {
+  position: relative;
   min-width: 30rem;
-  height: 45rem;
+  min-height: 45rem;
+  margin: 0 1rem;
   overflow: hidden;
   cursor: pointer;
-  position: relative;
-  margin-right: 1rem;
-  margin-left: 1rem;
 }
 
 .Poster {
@@ -43,6 +42,8 @@
 
 .ImagePlaceHolder {
   position: absolute;
+  top: 0;
+  right: 0;
   width: 30rem;
   height: 45rem;
   border-radius: 1rem;
@@ -60,7 +61,7 @@
   }
 
   100% {
-    opacity: .8;
+    opacity: 0.9;
   }
 }
 

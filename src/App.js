@@ -15,10 +15,6 @@ import TV from './containers/TV/TV';
 
 class App extends Component {
   componentDidMount() {
-    // this.props.getConfig();
-    // this.props.getMovieGenres();
-    // this.props.getTVGenres();
-
     this.props.getData('/movie/popular', actionTypes.GET_POPULAR_MOVIES);
     this.props.getData('/movie/top_rated', actionTypes.GET_TOP_RATED_MOVIES);
     this.props.getData('/tv/popular', actionTypes.GET_POPULAR_TV);
