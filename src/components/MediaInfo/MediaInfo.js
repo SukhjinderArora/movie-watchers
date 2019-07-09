@@ -36,9 +36,16 @@ const MediaInfo = (props) => {
       </div>
     );
   } else {
-    cast = <Carousel title="Cast" data={castArray} responsive={
-             { 0: { items: 1 }, 767: { items: 2 }, 1023: { items: 3 }, 1200: { items: 7 }}
-            }/>;
+    const responsive = { 
+      0: { items: 1 },
+      767: { items: 2 }, 
+      1023: { items: 3 }, 
+      1200: { items: 7 } 
+    };
+    cast = <Carousel 
+              title="Cast" 
+              data={castArray} 
+              responsive={responsive}/>;
   }
 
   const recommendations = data.recommendations.map(dataItem => {
