@@ -1,36 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actionTypes from '../../store/actions/actionTypes';
-import { getDataAsync, clearData } from '../../store/actions/dataActions';
+import { getMovieDetails } from '../../store/actions/moviesAction';
 import { currencyFormatter } from '../../utils/utils';
 
 import MediaInfo from '../../components/MediaInfo/MediaInfo';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-class Movie extends Component {
+class MovieInfo extends Component {
   getMovie = () => {
-    this.props.clearData(actionTypes.CLEAR_MOVIE_DATA);
     const movieId = this.props.match.params.id;
-    this.props.getData(
-      `/movie/${movieId}`, 
-      actionTypes.GET_MOVIE_DETAILS, 
-      '&append_to_response=credits,videos,recommendations'
-    );
+    this.props.getMovieDetails(movieId);
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.getMovie();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
+      window.scrollTo(0, 0);
       this.getMovie();
     }
   }
 
   render() {
-    if(!this.props.movie) return <Spinner />;
+    if (!this.props.movie) return <Spinner />;
     const { movie } = this.props;
     const movieData = {
       title: movie.title,
@@ -52,7 +48,7 @@ class Movie extends Component {
       ]
     };
 
-    return <MediaInfo data={movieData}/>;
+    return <MediaInfo data={movieData} />;
   }
 }
 
@@ -64,9 +60,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getData: (path, actionType, appendToResponse) => dispatch(getDataAsync(path, actionType, appendToResponse)),
-    clearData: (actionType) => dispatch(clearData(actionType))
+    getMovieDetails: (movieId) => dispatch(getMovieDetails(movieId)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Movie);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

@@ -4,6 +4,7 @@ import { base_img_url } from '../../config';
 
 import Card from '../UI/Card/Card';
 import Carousel from '../UI/Carousel/Carousel';
+import placeholderImage from '../../assets/images/placeholder_img.png'
 
 import classes from './MediaInfo.module.css';
 
@@ -22,7 +23,7 @@ const MediaInfo = (props) => {
       <div className={classes.cast} key={member.profile_path} onDragStart={(e) => e.preventDefault()}>
         <img src={base_img_url + 'w154' + member.profile_path} alt="Cast" onError={(e) => e.target.src = "https://via.placeholder.com/154x231?text=Image+not+available"} className={classes.castImg} />
         <h3 className={classes.castName}>{member.name}</h3>
-        <h3 className={classes.characterName}>{member.character}</h3>
+        <h3 className={classes.characterName}>{member.character.length > 17 ? member.character.substring(0, 16) + '...' : member.character}</h3>
       </div>
     );
   });
@@ -65,18 +66,29 @@ const MediaInfo = (props) => {
     );
   }
 
-  const recommendations = data.recommendations.map(dataItem => {
-    return <Card 
-             imgUrl={base_img_url + 'w300/' + dataItem.poster_path}
-             key={dataItem.id}
-             onDragStart={(e) => e.preventDefault()}
-             data={dataItem} />;
-  });
+  let recommendationsCarousel = null;
+  if(data.recommendations.length > 0) {
+    const recommendations = data.recommendations.map(dataItem => {
+      return <Card
+        imgUrl={base_img_url + 'w300/' + dataItem.poster_path}
+        key={dataItem.id}
+        onDragStart={(e) => e.preventDefault()}
+        data={dataItem} />;
+    });
+    recommendationsCarousel = <Carousel title="Recommendations" data={recommendations} responsive={responsive} />;
+  }
+
+  let image;
+  if(!data.posterPath) {
+    image = <img src={placeholderImage} alt="Poster" className={classes.poster} />
+  } else {
+    image = <img src={base_img_url + 'w300/' + data.posterPath} alt="Poster" className={classes.poster} />;
+  }
 
   return (
     <div className={classes.MediaInfo}>
       <div className={classes.FlexContainer}>
-        <img src={base_img_url + 'w300/' + data.posterPath} alt="Poster" className={classes.poster} />
+        {image}
         <div className={classes.infoContainer}>
           <h1 className={classes.title}>{data.title}</h1>
           <p className={classes.overview}>{data.overview}</p>
@@ -92,7 +104,8 @@ const MediaInfo = (props) => {
       </div>
       {cast}
       {video}
-      <Carousel title="Recommendations" data={recommendations} responsive={responsive} />
+      {recommendationsCarousel}
+      {/* <Carousel title="Recommendations" data={recommendations} responsive={responsive} /> */}
     </div>
   );
 };

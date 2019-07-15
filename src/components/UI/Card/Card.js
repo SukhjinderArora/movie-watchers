@@ -16,7 +16,7 @@ class Card extends Component {
   };
 
   render() {
-    let releaseDate, path, regex = /\s/g;
+    let releaseDate, path, regex = /[\s/%]/g;
     const { data } = this.props;
     const placeHolderDiv = [classes.ImagePlaceHolder];
 
@@ -24,14 +24,15 @@ class Card extends Component {
       placeHolderDiv.push(classes.ImageLoaded);
     }
     
-    if(data.release_date) {
+    if (data.hasOwnProperty('release_date')) {
       releaseDate = (
         <>
           <span>Release Date:</span>
           <span>{data.release_date}</span>
         </>
       );
-      path = `/movie/${data.title.replace(regex, '-')}/${data.id}`;
+      // data.title.replace(regex, '-')
+      path = `/movies/movie/${encodeURIComponent(data.title)}/${data.id}`;
     } else {
       releaseDate = (
         <>
@@ -39,7 +40,8 @@ class Card extends Component {
           <span>{data.first_air_date}</span>
         </>
       );
-      path = `/tv/${data.name.replace(regex, '-')}/${data.id}`;
+      // data.name.replace(regex, '-')
+      path = `/tv/${encodeURIComponent(data.name)}/${data.id}`;
     }
          
     return (
@@ -48,8 +50,9 @@ class Card extends Component {
           src={this.props.imgUrl}
           alt="Poster" 
           className={classes.Poster}
+          onError={(e) => e.target.src = "https://via.placeholder.com/300x450?text=Image+not+available"}
           onLoad={this.onImageLoad} />
-        <div className={placeHolderDiv.join(' ')}></div>
+        {/* <div className={placeHolderDiv.join(' ')}></div> */}
         <div className={classes.Content}>
           <h1 className={classes.Title}>{data.title ? data.title : data.name}</h1>
           <div>

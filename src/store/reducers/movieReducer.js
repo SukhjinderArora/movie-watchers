@@ -2,10 +2,46 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   genres: null,
-  popularMovies: null,
-  topRatedMovies: null,
+  popularMovies: {
+    page: 0,
+    results: [],
+    total_pages: 0
+  },
+  topRatedMovies: {
+    page: 0,
+    results: [],
+    total_pages: 0
+  },
+  upcomingMovies: {
+    page: 0,
+    results: [],
+    total_pages: 0
+  },
+  nowPlayingMovies: {
+    page: 0,
+    results: [],
+    total_pages: 0
+  },
   movie: null,
   error: null
+};
+
+const updateState = (prevState, newData) => {
+  if (prevState.page === newData.page) return prevState;
+  const results = prevState.results.map(item => ({ ...item }));
+  return {
+    page: newData.page,
+    results: [...results, ...newData.results],
+    total_pages: newData.total_pages
+  };
+};
+
+const resetState = () => {
+  return {
+    page: 0,
+    results: [],
+    total_pages: 0
+  };
 };
 
 const movieReducer = (state = initialState, action) => {
@@ -19,20 +55,33 @@ const movieReducer = (state = initialState, action) => {
     case actionTypes.GET_POPULAR_MOVIES:
       return {
         ...state,
-        popularMovies: action.data,
+        popularMovies: updateState(state.popularMovies, action.data),
         error: null
       };
     case actionTypes.GET_TOP_RATED_MOVIES:
       return {
         ...state,
-        topRatedMovies: action.data,
+        topRatedMovies: updateState(state.topRatedMovies, action.data),
         error: null
       };
-    case actionTypes.CLEAR_MOVIE_DATA:
+    case actionTypes.GET_UPCOMING_MOVIES:
       return {
         ...state,
-        movie: null,
+        upcomingMovies: updateState(state.upcomingMovies, action.data),
         error: null
+      }
+    case actionTypes.GET_NOW_PLAYING_MOVIES:
+      return {
+        ...state,
+        nowPlayingMovies: updateState(state.nowPlayingMovies, action.data),
+        error: null
+      }
+    case actionTypes.CLEAR_MOVIE_DATA:
+      return {
+        popularMovies: resetState(),
+        topRatedMovies: resetState(),
+        upcomingMovies: resetState(),
+        nowPlayingMovies: resetState()
       };
     case actionTypes.GET_MOVIE_DETAILS:
       return {

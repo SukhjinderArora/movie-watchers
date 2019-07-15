@@ -1,38 +1,25 @@
-import { base_url, API_KEY } from '../../config';
-import * as actionTypes from './actionTypes';
-
 import axios from 'axios';
 
-const getData = (actionType, data) => {
+import { API_KEY, base_url } from '../../config';
+
+const setData = (actionType, data) => {
   return {
     type: actionType,
-    data: data.results || data
+    data: data
   };
 };
 
-export const clearData = (actionType) => {
-  return {
-    type: actionType
-  };
-};
-
-const getError = (error) => {
-  return {
-    type: actionTypes.ERROR,
-    error
-  };
-};
-
-export const getDataAsync = (path, actionType, appendToResponse = '') => {
+export const getDataAsync = (path, actionType, queryParameters = {}) => {
   return async dispatch => {
     try {
-      const url = `${base_url}${path}?api_key=${API_KEY}${appendToResponse}`;
-      const response = await axios.get(url);
-      console.log(response.data)
-      dispatch(getData(actionType, response.data));
-    } catch(error) {
+      const url = `${base_url}${path}?api_key=${API_KEY}`;
+      const response = await axios.get(url, {
+        params: queryParameters
+      });
+      console.log(response)
+      dispatch(setData(actionType, response.data));
+    } catch (error) {
       console.log(error.message);
-      dispatch(getError(error.message));
     }
   };
 };

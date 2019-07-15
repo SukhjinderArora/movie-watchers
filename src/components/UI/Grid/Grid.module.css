@@ -3,6 +3,10 @@
   margin: 2rem;
 } */
 
+.GridContainer {
+  padding-top: 2rem;
+}
+
 .title {
   font-weight: 400;
   font-size: 2rem;
