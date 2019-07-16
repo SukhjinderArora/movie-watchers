@@ -5,6 +5,7 @@ import { base_img_url } from '../../config';
 import Card from '../UI/Card/Card';
 import Carousel from '../UI/Carousel/Carousel';
 import placeholderImage from '../../assets/images/placeholder_img.png'
+import placeholderImage_154x231 from '../../assets/images/placeholder_154x231.png'
 
 import classes from './MediaInfo.module.css';
 
@@ -19,9 +20,15 @@ const MediaInfo = (props) => {
   };
 
   const castArray = data.cast.slice(0, 19).map(member => {
+    let image;
+    if(!member.profile_path) {
+      image = <img src={placeholderImage_154x231} alt="Cast" className={classes.castImg} />
+    } else {
+      image = <img src={base_img_url + 'w154' + member.profile_path} alt="Cast" className={classes.castImg} />
+    }
     return (
       <div className={classes.cast} key={member.profile_path} onDragStart={(e) => e.preventDefault()}>
-        <img src={base_img_url + 'w154' + member.profile_path} alt="Cast" onError={(e) => e.target.src = "https://via.placeholder.com/154x231?text=Image+not+available"} className={classes.castImg} />
+        {image}
         <h3 className={classes.castName}>{member.name}</h3>
         <h3 className={classes.characterName}>{member.character.length > 17 ? member.character.substring(0, 16) + '...' : member.character}</h3>
       </div>
