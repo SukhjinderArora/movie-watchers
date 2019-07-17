@@ -76,21 +76,16 @@ const tvReducer = (state = initialState, action) => {
         onTheAirTodayTV: updateState(state.onTheAirTodayTV, action.data),
         error: null
       };
-    case actionTypes.CLEAR_TV_DATA:
-      return {
-        ...state,
-        topRatedTV: resetState(),
-        popularTV: resetState(),
-        onTheAirTV: resetState(),
-        onTheAirTodayTV: resetState(),
-        show: null,
-        error: null
-      };
     case actionTypes.GET_TV_DETAILS:
       return {
         ...state,
         show: action.data,
         error: null
+      };
+    case actionTypes.CLEAR_TV_DATA:
+      return {
+        ...state,
+        show: null,
       };
     case actionTypes.ERROR:
       return {

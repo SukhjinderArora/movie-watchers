@@ -2,7 +2,7 @@
   position: relative;
   min-width: 30rem;
   min-height: 45rem;
-  margin: 0 1rem;
+  margin-right: 2rem;
   overflow: hidden;
   cursor: pointer;
 }

@@ -58,29 +58,29 @@ class Home extends Component {
           data={this.transformData(this.props.popularMovies)} 
           responsive={responsive}/>
         <Carousel
-          title="Upcoming Movies"
-          data={this.transformData(this.props.upcomingMovies)}
-          responsive={responsive} />
-        <Carousel
-          title="Now Playing Movies"
-          data={this.transformData(this.props.nowPlayingMovies)}
+          title="Popular TV"
+          data={this.transformData(this.props.popularTV)}
           responsive={responsive} />
         <Carousel
           title="Top Rated Movies"
           data={this.transformData(this.props.topRatedMovies)}
           responsive={responsive} />
         <Carousel
-          title="Popular TV"
-          data={this.transformData(this.props.popularTV)}
+          title="Top Rated TV"
+          data={this.transformData(this.props.topRatedTV)}
           responsive={responsive} />
-        <Carousel 
-          title="Top Rated TV" 
-          data={this.transformData(this.props.topRatedTV)} 
-          responsive={responsive}/>
+        <Carousel
+          title="Now Playing Movies"
+          data={this.transformData(this.props.nowPlayingMovies)}
+          responsive={responsive} />
         <Carousel 
           title="On Air TV" 
           data={this.transformData(this.props.onTheAirTV)} 
           responsive={responsive}/>
+        <Carousel
+          title="Upcoming Movies"
+          data={this.transformData(this.props.upcomingMovies)}
+          responsive={responsive} />
         <Carousel 
           title="On Air Today TV" 
           data={this.transformData(this.props.onTheAirTodayTV)} 

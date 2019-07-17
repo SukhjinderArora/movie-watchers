@@ -20,6 +20,44 @@
   color: #3e3d3d;
   font-weight: 700;
   text-decoration: none;
+  flex: 1;
+}
+
+.Navigation {
+  display: flex;
+  flex: 2;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.SearchForm {
+  margin-right: 5rem;
+  position: relative;
+}
+
+.SearchInput {
+  font-size: 1.4rem;
+  font-family: inherit;
+  padding: 0.5rem;
+  width: 25rem;
+  border: 0;
+  border-bottom: 1px solid #d4d4d4;
+  transition: border .2s;
+}
+
+.SearchInput:focus {
+  border-bottom: 1px solid #55AA29;
+  outline: 0;
+}
+
+.btnSearch {
+  background: 0;
+  border: 0;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .NavList {
@@ -31,6 +69,28 @@
 .NavItem {
   margin-left: 1rem;
   color: rgba(0,0,0,.7);
+  position: relative;
+}
+
+.Dropdown {
+  display: none;
+  list-style: none;
+  position: absolute;
+  background: #fff;
+  padding: 1rem;
+}
+
+.NavItem:hover .Dropdown {
+  display: block;
+}
+
+.Dropdown li {
+  margin-top: 1rem;
+}
+
+li a {
+  color: rgba(0,0,0,.7);
+  text-decoration: none;
 }
 
 .NavLink {

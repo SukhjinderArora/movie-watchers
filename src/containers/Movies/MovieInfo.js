@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getMovieDetails } from '../../store/actions/moviesAction';
+import { getMovieDetails, resetMovieData } from '../../store/actions/moviesAction';
 import { currencyFormatter } from '../../utils/utils';
 
 import MediaInfo from '../../components/MediaInfo/MediaInfo';
@@ -9,6 +9,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 
 class MovieInfo extends Component {
   getMovie = () => {
+    this.props.clearPrevMovie();
     const movieId = this.props.match.params.id;
     this.props.getMovieDetails(movieId);
   };
@@ -61,6 +62,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getMovieDetails: (movieId) => dispatch(getMovieDetails(movieId)),
+    clearPrevMovie: () => dispatch(resetMovieData())
   };
 };
 

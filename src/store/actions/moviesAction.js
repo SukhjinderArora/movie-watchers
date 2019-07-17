@@ -81,7 +81,7 @@ export const getMovieDetails = (movieId) => {
   };
 };
 
-export const resetMoviesData = () => {
+export const resetMovieData = () => {
   return {
     type: actionTypes.CLEAR_MOVIE_DATA
   };

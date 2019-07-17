@@ -15,7 +15,7 @@ class Movies extends Component {
         <Route path="/movies/topRated" component={TopRatedMovies}/>
         <Route path="/movies/upcoming" component={UpcomingMovies}/>
         <Route path="/movies/nowPlaying" component={NowPlayingMovies}/>
-        <Route path="/movies/movie/:title/:id" component={MovieInfo}/>
+        <Route path="/movies/:title/:id" component={MovieInfo}/>
       </Switch>
     );
   }

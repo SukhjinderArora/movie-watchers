@@ -16,7 +16,7 @@ class Card extends Component {
   };
 
   render() {
-    let releaseDate, path, regex = /[\s/%]/g;
+    let releaseDate, path, regex = /[^a-zA-Z0-9-_\.]/g;
     const { data } = this.props;
     const placeHolderDiv = [classes.ImagePlaceHolder];
 
@@ -32,7 +32,7 @@ class Card extends Component {
         </>
       );
       // data.title.replace(regex, '-')
-      path = `/movies/movie/${encodeURIComponent(data.title)}/${data.id}`;
+      path = `/movies/${data.title.replace(regex, '-')}/${data.id}`;
     } else {
       releaseDate = (
         <>
@@ -41,7 +41,7 @@ class Card extends Component {
         </>
       );
       // data.name.replace(regex, '-')
-      path = `/tv/${encodeURIComponent(data.name)}/${data.id}`;
+      path = `/tv/${data.name.replace(regex, '-')}/${data.id}`;
     }
          
     return (

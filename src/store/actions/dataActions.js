@@ -16,7 +16,6 @@ export const getDataAsync = (path, actionType, queryParameters = {}) => {
       const response = await axios.get(url, {
         params: queryParameters
       });
-      console.log(response)
       dispatch(setData(actionType, response.data));
     } catch (error) {
       console.log(error.message);

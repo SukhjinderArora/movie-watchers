@@ -8,10 +8,9 @@ import * as genreActions from './store/actions/genreActions';
 import Navbar from './components/Navigation/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './containers/Home/Home';
+import Search from './containers/Search/Search';
 import Movies from './containers/Movies/Movies';
-import MovieInfo from './containers/Movies/MovieInfo';
 import TV from './containers/TV/TV';
-import TVInfo from './containers/TV/TVInfo';
 
 import './App.css';
 
@@ -22,8 +21,9 @@ class App extends Component {
         <Navbar />
         <div className="Container">
           <Switch>
-            <Route path="/movies/" component={Movies} />
-            <Route path="/tv/" component={TV} />
+            <Route path="/movies" component={Movies} />
+            <Route path="/tv" component={TV} />
+            <Route path="/search" component={Search} />
             <Route path="/" exact component={Home} />
             <Route render={() => <h1>404 Page Not Found!</h1>} />
           </Switch>

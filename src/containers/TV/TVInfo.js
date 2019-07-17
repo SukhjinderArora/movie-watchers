@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getShowDetails } from '../../store/actions/tvAction';
+import { getShowDetails, resetTVData } from '../../store/actions/tvAction';
 
 import MediaInfo from '../../components/MediaInfo/MediaInfo';
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -9,6 +9,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 class TVInfo extends Component {
 
   getTVShow = () => {
+    this.props.clearPrevShow();
     const tvId = this.props.match.params.id;
     this.props.getShowDetails(tvId);
   };
@@ -63,6 +64,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getShowDetails: (tvId) => dispatch(getShowDetails(tvId)),
+    clearPrevShow: () => dispatch(resetTVData())
   };
 };
 

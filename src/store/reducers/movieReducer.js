@@ -76,18 +76,16 @@ const movieReducer = (state = initialState, action) => {
         nowPlayingMovies: updateState(state.nowPlayingMovies, action.data),
         error: null
       }
-    case actionTypes.CLEAR_MOVIE_DATA:
-      return {
-        popularMovies: resetState(),
-        topRatedMovies: resetState(),
-        upcomingMovies: resetState(),
-        nowPlayingMovies: resetState()
-      };
     case actionTypes.GET_MOVIE_DETAILS:
       return {
         ...state,
         movie: action.data,
         error: null
+      };
+    case actionTypes.CLEAR_MOVIE_DATA:
+      return {
+        ...state,
+        movie: null
       };
     case actionTypes.ERROR:
       return {
