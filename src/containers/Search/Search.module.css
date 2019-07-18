@@ -1,12 +1,21 @@
-.Error {
-  text-align: center;
-  margin-top: 10rem;
-}
-
 .resultNotFound {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 400;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 10rem;
   color: rgba(0, 0, 0, 0.95);
+}
+
+.resultNotFound span {
+  font-weight: 700;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 2.4rem;
+  padding-top: 2rem;
+}
+
+.title span {
+  font-weight: 700;
 }

@@ -62,13 +62,21 @@ class Search extends Component {
 
   render() {
     const { searchResults } = this.props;
+    const { query } = queryString.parse(this.props.location.search);
     let components;
     if (searchResults.results.length === 0 && searchResults.total_results === -1) {
       components = <Spinner />;
     } else if (searchResults.results.length === 0 && searchResults.total_results === 0) {
-      components = <h1 className={classes.resultNotFound}>No Results Found</h1>;
+      components = (
+        <h1 className={classes.resultNotFound}>No Results Found for your search term <span>{query}</span>.</h1>
+      );
     } else {
-      components = <Grid data={searchResults.results} />;
+      components = (
+        <>
+          <h1 className={classes.title}>Search Results for <span>{query}</span>:</h1>
+          <Grid data={searchResults.results} />
+        </>
+      );
     }
     return (
       <div className={classes.SearchContainer}>
