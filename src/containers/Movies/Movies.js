@@ -90,7 +90,12 @@ class Movies extends Component {
     } else if (data.results.length === 0 && data.total_results === 0) {
       components = <h1 className={classes.resultNotFound}>No Results Found</h1>;
     } else {
-      components = <Grid data={data.results} />;
+      components = (
+        <>
+          <Grid data={data.results} />
+          {this.props.data.page < this.props.data.total_pages ? <Spinner /> : null}
+        </>
+      );
     }
 
     return (

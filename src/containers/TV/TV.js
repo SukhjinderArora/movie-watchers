@@ -11,7 +11,7 @@ import classes from './TV.module.css';
 class TV extends Component {
   state = {
     hasMore: true,
-    selectedGenre: ''
+    selectedGenre: '',
   };
 
   loadData = () => {
@@ -83,23 +83,21 @@ class TV extends Component {
   }
 
   render() {
-    // const { data } = this.props;
-    // if (data.results.length === 0) return <Spinner />;
-    // return (
-    //   <div>
-    //     <Grid data={data.results} />
-    //   </div>
-    // );
     const { data } = this.props;
     const { genres } = this.props;
-    if (data.results.length === 0 && data.total_results === -1) return <Spinner />;
     let components;
-    if (data.total_results === 0) {
+    if (data.results.length === 0 && data.total_results === -1) {
+      components = <Spinner />;
+    } else if (data.results.length === 0 && data.total_results === 0) {
       components = <h1 className={classes.resultNotFound}>No Results Found</h1>;
     } else {
-      components = <Grid data={data.results} />;
+      components = (
+        <>
+          <Grid data={data.results} />
+          {this.props.data.page < this.props.data.total_pages ? <Spinner /> : null }
+        </>
+      );
     }
-    
     return (
       <div>
         <header className={classes.header}>
