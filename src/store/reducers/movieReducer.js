@@ -36,14 +36,6 @@ const updateState = (prevState, newData) => {
   };
 };
 
-const resetState = () => {
-  return {
-    page: 0,
-    results: [],
-    total_pages: 0
-  };
-};
-
 const movieReducer = (state = initialState, action) => {
   switch(action.type) {
     case actionTypes.GET_MOVIE_GENRES:

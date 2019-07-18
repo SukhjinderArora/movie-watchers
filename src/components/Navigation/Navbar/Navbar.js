@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import {Link, NavLink, withRouter} from 'react-router-dom';
 
 import classes from './Navbar.module.css';
 import SearchIcon from '../../UI/SearchIcon/SearchIcon';
@@ -44,36 +44,36 @@ class Navbar extends Component {
           </form>
           <ul className={classes.NavList}>
             <li className={classes.NavItem}>
-              <Link to="/">Movies</Link>
-              <ul className={classes.Dropdown}>
+              <NavLink to="/movies" activeClassName={classes.NavItem_active}>Movies</NavLink>
+              <ul className={[classes.Dropdown, classes.DropdownLeft].join(' ')}>
                 <li>
-                  <Link to="/movies/popular">Popular</Link>
+                  <NavLink to="/movies/popular" activeClassName={classes.Dropdown_link_active}>Popular</NavLink>
                 </li>
                 <li>
-                  <Link to="/movies/topRated">Top Rated</Link>
+                  <NavLink to="/movies/topRated" activeClassName={classes.Dropdown_link_active}>Top Rated</NavLink>
                 </li>
                 <li>
-                  <Link to="/movies/upcoming">Upcoming</Link>
+                  <NavLink to="/movies/upcoming" activeClassName={classes.Dropdown_link_active}>Upcoming</NavLink>
                 </li>
                 <li>
-                  <Link to="/movies/nowPlaying">Now Playing</Link>
+                  <NavLink to="/movies/nowPlaying" activeClassName={classes.Dropdown_link_active}>Now Playing</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classes.NavItem}>
-              <Link to="/">TV</Link>
-              <ul className={classes.Dropdown}>
+              <NavLink to="/tv" activeClassName={classes.NavItem_active}>TV</NavLink>
+              <ul className={[classes.Dropdown, classes.DropdownRight].join(' ')}>
                 <li>
-                  <Link to="/tv/topRated">Popular</Link>
+                  <NavLink to="/tv/popular" activeClassName={classes.Dropdown_link_active}>Popular</NavLink>
                 </li>
                 <li>
-                  <Link to="/tv/popular">Top Rated</Link>
+                  <NavLink to="/tv/topRated" activeClassName={classes.Dropdown_link_active}>Top Rated</NavLink>
                 </li>
                 <li>
-                  <Link to="/tv/onAir">On Air</Link>
+                  <NavLink to="/tv/onAir" activeClassName={classes.Dropdown_link_active}>On Air</NavLink>
                 </li>
                 <li>
-                  <Link to="/tv/onAirToday">On Air Today</Link>
+                  <NavLink to="/tv/onAirToday" activeClassName={classes.Dropdown_link_active}>On Air Today</NavLink>
                 </li>
               </ul>
             </li>

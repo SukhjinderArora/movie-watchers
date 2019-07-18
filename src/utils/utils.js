@@ -16,6 +16,5 @@ export const addDaysToCurrentDate = (numberOfDays) => {
 
 export const subtractDaysFromCurrentDate = (numberOfDays) => {
   const pastDate = moment().subtract(numberOfDays, 'days');
-  console.log(pastDate.format('DD-MM-YYYY'))
   return pastDate.format('YYYY-MM-DD');
 };

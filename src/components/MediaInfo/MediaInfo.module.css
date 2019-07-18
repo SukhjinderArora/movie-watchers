@@ -4,19 +4,23 @@
 
 .FlexContainer {
   display: flex;
+  align-items: flex-start;
 }
 
 .poster {
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, .1);
+  flex: 1;
 }
 
 .infoContainer {
   margin-left: 5rem;
+  flex: 3;
 }
 
 .title {
   font-size: 5rem;
   color: rgba(0, 0, 0, .75);
+  margin-top: -1rem;
 }
 
 .overview {

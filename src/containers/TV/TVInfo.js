@@ -29,12 +29,19 @@ class TVInfo extends Component {
   render() {
     if (!this.props.tv) return <Spinner />;
     const { tv } = this.props;
+    let tvTrailer = tv.videos.results.filter(result => result.type === 'Trailer');
+    if (tvTrailer.length === 0) {
+      tvTrailer = tv.videos.results.filter(result => result.type === 'Teaser');
+      if (tvTrailer.length === 0) {
+        tvTrailer = tv.videos.results;
+      }
+    }
     const tvData = {
       title: tv.name,
       overview: tv.overview,
       posterPath: tv.poster_path,
       cast: tv.credits.cast,
-      videoKey: tv.videos.results[0] ? tv.videos.results[0].key : null,
+      videoKey: tvTrailer[0] ? tvTrailer[0].key : null,
       recommendations: tv.recommendations.results,
       other: [
         { name: 'Tagline', value: tv.tagline },

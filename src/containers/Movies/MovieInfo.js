@@ -29,19 +29,26 @@ class MovieInfo extends Component {
   render() {
     if (!this.props.movie) return <Spinner />;
     const { movie } = this.props;
+    let movieTrailer = movie.videos.results.filter(result => result.type === 'Trailer');
+    if(movieTrailer.length === 0) {
+      movieTrailer = movie.videos.results.filter(result => result.type === 'Teaser');
+      if(movieTrailer.length === 0) {
+        movieTrailer = movie.videos.results;
+      }
+    }
     const movieData = {
       title: movie.title,
       overview: movie.overview,
       posterPath: movie.poster_path,
       cast: movie.credits.cast,
-      videoKey: movie.videos.results[0] ? movie.videos.results[0].key : null,
+      videoKey: movieTrailer[0] ? movieTrailer[0].key : null,
       recommendations: movie.recommendations.results,
       other: [
         { name: 'Tagline', value: movie.tagline },
         { name: 'Genre', value: movie.genres.map(genre => genre.name).join(', ') },
         { name: 'Rating', value: movie.vote_average + '/10' },
         { name: 'Release Date', value: movie.release_date },
-        { name: 'Runtime', value: movie.runtime },
+        { name: 'Runtime', value: `${movie.runtime} (mins)` },
         { name: 'Budget', value: currencyFormatter.format(movie.budget) },
         { name: 'Revenue', value: currencyFormatter.format(movie.revenue) },
         { name: 'Production Companies', value: movie.production_companies.map(company => company.name).join(', ') },

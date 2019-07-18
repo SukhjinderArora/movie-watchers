@@ -1,0 +1,19 @@
+.NotFound {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.NotFound h1 {
+  font-size: 5rem;
+}
+
+.NotFound h2 {
+  font-size: 2rem;
+}
+
+.NotFound a {
+  font-size: 1.4rem
+}

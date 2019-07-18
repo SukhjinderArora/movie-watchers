@@ -1,16 +1,16 @@
-.Loader {
+/* .Loader {
   font-size: 10px;
   margin: 100px auto;
   text-indent: -9999em;
   width: 11em;
   height: 11em;
   border-radius: 50%;
-  background: #00a600;
-  background: -moz-linear-gradient(left, #00a600 10%, rgba(0,166,0, 0) 42%);
-  background: -webkit-linear-gradient(left, #00a600 10%, rgba(0,166,0, 0) 42%);
-  background: -o-linear-gradient(left, #00a600 10%, rgba(0,166,0, 0) 42%);
-  background: -ms-linear-gradient(left, #00a600 10%, rgba(0,166,0, 0) 42%);
-  background: linear-gradient(to right, #00a600 10%, rgba(0,166,0, 0) 42%);
+  background: #55AA29;
+  background: -moz-linear-gradient(left, #55AA29 10%, rgba(0,166,0, 0) 42%);
+  background: -webkit-linear-gradient(left, #55AA29 10%, rgba(0,166,0, 0) 42%);
+  background: -o-linear-gradient(left, #55AA29 10%, rgba(0,166,0, 0) 42%);
+  background: -ms-linear-gradient(left, #55AA29 10%, rgba(0,166,0, 0) 42%);
+  background: linear-gradient(to right, #55AA29 10%, rgba(0,166,0, 0) 42%);
   position: relative;
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
@@ -21,7 +21,7 @@
 .Loader:before {
   width: 50%;
   height: 50%;
-  background: #00a600;
+  background: #55AA29;
   border-radius: 100% 0 0 0;
   position: absolute;
   top: 0;
@@ -58,6 +58,34 @@
   }
   100% {
     -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+} */
+
+.ldsDualRing{
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  padding-top: 5rem;
+}
+
+.ldsDualRing:after {
+  content: " ";
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 7px solid #55AA29;
+  border-color: #55AA29 transparent #55AA29 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
     transform: rotate(360deg);
   }
 }

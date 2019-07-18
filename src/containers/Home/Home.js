@@ -35,8 +35,8 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     if(this.props.loading) {
-      window.scrollTo(0, 0);
       this.props.getData();
     }
   }
@@ -58,7 +58,7 @@ class Home extends Component {
           data={this.transformData(this.props.popularMovies)} 
           responsive={responsive}/>
         <Carousel
-          title="Popular TV"
+          title="Popular Shows"
           data={this.transformData(this.props.popularTV)}
           responsive={responsive} />
         <Carousel
@@ -66,7 +66,7 @@ class Home extends Component {
           data={this.transformData(this.props.topRatedMovies)}
           responsive={responsive} />
         <Carousel
-          title="Top Rated TV"
+          title="Top Rated Shows"
           data={this.transformData(this.props.topRatedTV)}
           responsive={responsive} />
         <Carousel
@@ -74,7 +74,7 @@ class Home extends Component {
           data={this.transformData(this.props.nowPlayingMovies)}
           responsive={responsive} />
         <Carousel 
-          title="On Air TV" 
+          title="On The Air Shows" 
           data={this.transformData(this.props.onTheAirTV)} 
           responsive={responsive}/>
         <Carousel
@@ -82,7 +82,7 @@ class Home extends Component {
           data={this.transformData(this.props.upcomingMovies)}
           responsive={responsive} />
         <Carousel 
-          title="On Air Today TV" 
+          title="Airing Today" 
           data={this.transformData(this.props.onTheAirTodayTV)} 
           responsive={responsive}/>
         </div>

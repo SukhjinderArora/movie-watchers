@@ -12,6 +12,7 @@ export const getPopularMovies = () => {
       region: 'US',
       sort_by: 'popularity.desc',
       with_genres: '',
+      include_adult: false,
     };
     dispatch(getDataAsync(path, actionTypes.GET_POPULAR_MOVIES, queryParameters))
   };
@@ -28,6 +29,7 @@ export const getTopRatedMovies = () => {
       sort_by: 'vote_average.desc',
       "vote_count.gte": 300,
       with_genres: '',
+      include_adult: false,
     };
     dispatch(getDataAsync(path, actionTypes.GET_TOP_RATED_MOVIES, queryParameters))
   };
@@ -47,6 +49,7 @@ export const getUpcomingMovies = () => {
       "primary_release_date.lte": addDaysToCurrentDate(45),
       with_release_type: '1|2|3',
       with_genres: '',
+      include_adult: false,
     };
     dispatch(getDataAsync(path, actionTypes.GET_UPCOMING_MOVIES, queryParameters));
   };
@@ -66,6 +69,7 @@ export const getNowPlayingMovies = () => {
       "primary_release_date.lte": addDaysToCurrentDate(2),
       with_release_type: '1|2|3',
       with_genres: '',
+      include_adult: false,
     };
     dispatch(getDataAsync(path, actionTypes.GET_NOW_PLAYING_MOVIES, queryParameters));
   };

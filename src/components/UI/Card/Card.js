@@ -16,7 +16,7 @@ class Card extends Component {
   };
 
   render() {
-    let releaseDate, path, regex = /[^a-zA-Z0-9-_\.]/g;
+    let releaseDate, path, regex = /[^a-zA-Z0-9-_.]/g;
     const { data } = this.props;
     const placeHolderDiv = [classes.ImagePlaceHolder];
 
