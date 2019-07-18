@@ -75,6 +75,7 @@ class Search extends Component {
         <>
           <h1 className={classes.title}>Search Results for <span>{query}</span>:</h1>
           <Grid data={searchResults.results} />
+          {this.props.searchResults.page < this.props.searchResults.total_pages ? <Spinner /> : null}
         </>
       );
     }
