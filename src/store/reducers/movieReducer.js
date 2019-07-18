@@ -5,26 +5,39 @@ const initialState = {
   popularMovies: {
     page: 0,
     results: [],
-    total_pages: 0
+    total_pages: 0,
+    total_results: -1
   },
   topRatedMovies: {
     page: 0,
     results: [],
-    total_pages: 0
+    total_pages: 0,
+    total_results: -1
   },
   upcomingMovies: {
     page: 0,
     results: [],
-    total_pages: 0
+    total_pages: 0,
+    total_results: -1
   },
   nowPlayingMovies: {
     page: 0,
     results: [],
-    total_pages: 0
+    total_pages: 0,
+    total_results: -1
   },
   movie: null,
   error: null
 };
+
+const resetState = () => {
+  return {
+    page: 0,
+    results: [],
+    total_pages: 0,
+    total_results: -1
+  };
+}
 
 const updateState = (prevState, newData) => {
   if (prevState.page === newData.page) return prevState;
@@ -32,7 +45,8 @@ const updateState = (prevState, newData) => {
   return {
     page: newData.page,
     results: [...results, ...newData.results],
-    total_pages: newData.total_pages
+    total_pages: newData.total_pages,
+    total_results: newData.total_results
   };
 };
 
@@ -41,7 +55,7 @@ const movieReducer = (state = initialState, action) => {
     case actionTypes.GET_MOVIE_GENRES:
       return {
         ...state,
-        genres: action.genreList.genres,
+        genres: action.data.genres,
         error: null
       };
     case actionTypes.GET_POPULAR_MOVIES:
@@ -77,6 +91,10 @@ const movieReducer = (state = initialState, action) => {
     case actionTypes.CLEAR_MOVIE_DATA:
       return {
         ...state,
+        popularMovies: resetState(),
+        topRatedMovies: resetState(),
+        upcomingMovies: resetState(),
+        nowPlayingMovies: resetState(),
         movie: null
       };
     case actionTypes.ERROR:

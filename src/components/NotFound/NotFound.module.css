@@ -15,5 +15,21 @@
 }
 
 .NotFound a {
-  font-size: 1.4rem
+  display: inline-block;
+  color: #fff;
+  background: #55AA29;
+  text-decoration: none;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  border: 1px solid transparent;
+  transition: background 0.2s, color .2s;
+}
+
+.NotFound a:hover,
+.NotFound a:active {
+  opacity: 0.8;
+  color: #55AA29;
+  background: #fff;
+  border: 1px solid #55AA29
 }

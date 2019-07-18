@@ -90,9 +90,9 @@
 
 .Dropdown {
   /* display: none; */
-  height: 0;
+  /* height: 0;
   opacity: 0;
-  width: 0;
+  width: 0; */
   list-style: none;
   position: absolute;
   background: #fff;
@@ -111,13 +111,22 @@
   transform: translateX(50%);
 }
 
-.NavItem:hover .Dropdown {
-  /* display: block; */
+/* .NavItem:hover .Dropdown {
   height: 25.6rem;
   opacity: 1;
   width: 12rem;
+} */
 
-  /* display: block; */
+.DropdownClosed {
+  height: 0;
+  opacity: 0;
+  width: 0;
+}
+
+.DropdownOpen {
+  height: 25.6rem;
+  opacity: 1;
+  width: 12rem;
 }
 
 .Dropdown li a {

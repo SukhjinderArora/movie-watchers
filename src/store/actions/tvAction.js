@@ -2,8 +2,17 @@ import { getDataAsync } from './dataActions';
 import * as actionTypes from './actionTypes';
 import { addDaysToCurrentDate, getCurrentDate } from '../../utils/utils';
 
+export const getTVGenres = () => {
+  return (dispatch) => {
+    const path = '/genre/tv/list';
+    const queryParameters = {
+      language: 'en-US',
+    };
+    dispatch(getDataAsync(path, actionTypes.GET_TV_GENRES, queryParameters));
+  };
+};
 
-export const getPopularTV = () => {
+export const getPopularTV = (genre) => {
   return (dispatch, getState) => {
     const path = '/discover/tv';
     const pageNumber = getState().tv.popularTV.page;
@@ -12,12 +21,13 @@ export const getPopularTV = () => {
       language: 'en-US',
       timezone: 'America/New_York',
       sort_by: 'popularity.desc',
+      with_genres: genre
     };
     dispatch(getDataAsync(path, actionTypes.GET_POPULAR_TV, queryParameters));
   };
 };
 
-export const getTopRatedTV = () => {
+export const getTopRatedTV = (genre) => {
   return (dispatch, getState) => {
     const path = '/discover/tv';
     const pageNumber = getState().tv.topRatedTV.page;
@@ -26,13 +36,14 @@ export const getTopRatedTV = () => {
       language: 'en-US',
       timezone: 'America/New_York',
       sort_by: 'vote_average.desc',
-      "vote_count.gte": 50
+      "vote_count.gte": 50,
+      with_genres: genre
     };
     dispatch(getDataAsync(path, actionTypes.GET_TOP_RATED_TV, queryParameters));
   };
 };
 
-export const getOnTheAirTV = () => {
+export const getOnTheAirTV = (genre) => {
   return (dispatch, getState) => {
     const path = '/discover/tv';
     const pageNumber = getState().tv.onTheAirTV.page;
@@ -42,13 +53,14 @@ export const getOnTheAirTV = () => {
       timezone: 'America/New_York',
       sort_by: 'popularity.desc',
       "air_date.gte": getCurrentDate(),
-      "air_date.lte": addDaysToCurrentDate(7)
+      "air_date.lte": addDaysToCurrentDate(7),
+      with_genres: genre
     };
     dispatch(getDataAsync(path, actionTypes.GET_ON_THE_AIR_TV, queryParameters));
   };
 };
 
-export const getOnTheAirTodayTV = () => {
+export const getOnTheAirTodayTV = (genre) => {
   return (dispatch, getState) => {
     const path = '/discover/tv';
     const pageNumber = getState().tv.onTheAirTodayTV.page;
@@ -58,7 +70,8 @@ export const getOnTheAirTodayTV = () => {
       timezone: 'America/New_York',
       sort_by: 'popularity.desc',
       "air_date.gte": getCurrentDate(),
-      "air_date.lte": getCurrentDate()
+      "air_date.lte": getCurrentDate(),
+      with_genres: genre
     };
     dispatch(getDataAsync(path, actionTypes.GET_ON_THE_AIR_TODAY_TV, queryParameters));
   };

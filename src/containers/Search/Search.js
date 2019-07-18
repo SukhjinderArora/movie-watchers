@@ -11,9 +11,7 @@ import classes from './Search.module.css';
 class Search extends Component {
 
   state = {
-    error: false,
     hasMore: true,
-    isLoading: false,
   };
 
   loadData = () => {
@@ -27,16 +25,13 @@ class Search extends Component {
   handleScroll = () => {
     const {
       state: {
-        error,
         hasMore,
-        isLoading
       }
     } = this;
 
-    if (error || !hasMore || isLoading) return;
+    if (!hasMore) return;
 
     if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500)) {
-      // Do awesome stuff like loading more content!
       this.loadData();
     }
   }
@@ -59,28 +54,25 @@ class Search extends Component {
       this.props.clearSearch();
       this.loadData();
     }
-    // this.loadData();
   }
 
   componentWillUnmount() {
-    // you need to unbind the same listener that was binded.
     window.removeEventListener('scroll', this.debouncedFunction, false);
   }
 
   render() {
     const { searchResults } = this.props;
-    let component;
-    if (searchResults.results.length === 0 && this.props.error === '') {
-      component = <Spinner />;
-    } else if (this.props.error) {
-      component = <h1 className={classes.Error}>{this.props.error}</h1>;
+    let components;
+    if (searchResults.results.length === 0 && searchResults.total_results === -1) {
+      components = <Spinner />;
+    } else if (searchResults.results.length === 0 && searchResults.total_results === 0) {
+      components = <h1 className={classes.resultNotFound}>No Results Found</h1>;
     } else {
-      component = <Grid data={searchResults.results} />;
+      components = <Grid data={searchResults.results} />;
     }
-
     return (
       <div className={classes.SearchContainer}>
-        {component}
+        {components}
       </div>
     );
   }
@@ -89,7 +81,6 @@ class Search extends Component {
 const mapStateToProps = state => {
   return {
     searchResults: state.search.searchResults,
-    error: state.search.error
   };
 };
 

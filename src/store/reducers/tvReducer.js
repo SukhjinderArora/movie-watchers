@@ -5,26 +5,39 @@ const initialState = {
   popularTV: {
     page: 0,
     results: [],
-    total_pages: 0
+    total_pages: 0,
+    total_results: -1
   },
   topRatedTV: {
     page: 0,
     results: [],
-    total_pages: 0
+    total_pages: 0,
+    total_results: -1
   },
   onTheAirTV: {
     page: 0,
     results: [],
-    total_pages: 0
+    total_pages: 0,
+    total_results: -1
   },
   onTheAirTodayTV: {
     page: 0,
     results: [],
-    total_pages: 0
+    total_pages: 0,
+    total_results: -1
   },
   show: null,
   error: null
 };
+
+const resetState = () => {
+  return {
+    page: 0,
+    results: [],
+    total_pages: 0,
+    total_results: -1
+  };
+}
 
 const updateState = (prevState, newData) => {
   if(prevState.page === newData.page) return prevState;
@@ -32,7 +45,8 @@ const updateState = (prevState, newData) => {
   return {
     page: newData.page,
     results: [...results, ...newData.results],
-    total_pages: newData.total_pages
+    total_pages: newData.total_pages,
+    total_results: newData.total_results
   };
 };
 
@@ -41,7 +55,7 @@ const tvReducer = (state = initialState, action) => {
     case actionTypes.GET_TV_GENRES:
       return {
         ...state,
-        genres: action.genreList.genres,
+        genres: action.data.genres,
         error: null
       };
     case actionTypes.GET_POPULAR_TV:
@@ -77,6 +91,10 @@ const tvReducer = (state = initialState, action) => {
     case actionTypes.CLEAR_TV_DATA:
       return {
         ...state,
+        popularTV: resetState(),
+        topRatedTV: resetState(),
+        onTheAirTV: resetState(),
+        onTheAirTodayTV: resetState(),
         show: null,
       };
     case actionTypes.ERROR:

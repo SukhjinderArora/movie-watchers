@@ -2,7 +2,17 @@ import * as actionTypes from './actionTypes';
 import { getDataAsync } from './dataActions';
 import { addDaysToCurrentDate, subtractDaysFromCurrentDate } from '../../utils/utils';
 
-export const getPopularMovies = () => {
+export const getMovieGenres = () => {
+  return (dispatch) => {
+    const path = '/genre/movie/list';
+    const queryParameters = {
+      language: 'en-US',
+    };
+    dispatch(getDataAsync(path, actionTypes.GET_MOVIE_GENRES, queryParameters));
+  };
+};
+
+export const getPopularMovies = (genre) => {
   return (dispatch, getState) => {
     const path = '/discover/movie';
     const pageNumber = getState().movies.popularMovies.page;
@@ -11,14 +21,14 @@ export const getPopularMovies = () => {
       language: 'en-US',
       region: 'US',
       sort_by: 'popularity.desc',
-      with_genres: '',
+      with_genres: genre,
       include_adult: false,
     };
     dispatch(getDataAsync(path, actionTypes.GET_POPULAR_MOVIES, queryParameters))
   };
 };
 
-export const getTopRatedMovies = () => {
+export const getTopRatedMovies = (genre) => {
   return (dispatch, getState) => {
     const path = '/discover/movie';
     const pageNumber = getState().movies.topRatedMovies.page;
@@ -28,14 +38,14 @@ export const getTopRatedMovies = () => {
       region: 'US',
       sort_by: 'vote_average.desc',
       "vote_count.gte": 300,
-      with_genres: '',
+      with_genres: genre,
       include_adult: false,
     };
     dispatch(getDataAsync(path, actionTypes.GET_TOP_RATED_MOVIES, queryParameters))
   };
 };
 
-export const getUpcomingMovies = () => {
+export const getUpcomingMovies = (genre) => {
   return (dispatch, getState) => {
     const path = '/discover/movie';
     // console.log(getState())
@@ -48,14 +58,14 @@ export const getUpcomingMovies = () => {
       "primary_release_date.gte": addDaysToCurrentDate(2),
       "primary_release_date.lte": addDaysToCurrentDate(45),
       with_release_type: '1|2|3',
-      with_genres: '',
+      with_genres: genre,
       include_adult: false,
     };
     dispatch(getDataAsync(path, actionTypes.GET_UPCOMING_MOVIES, queryParameters));
   };
 };
 
-export const getNowPlayingMovies = () => {
+export const getNowPlayingMovies = (genre) => {
   return (dispatch, getState) => {
     const path = '/discover/movie';
     // console.log(getState())
@@ -68,7 +78,7 @@ export const getNowPlayingMovies = () => {
       "primary_release_date.gte": subtractDaysFromCurrentDate(60),
       "primary_release_date.lte": addDaysToCurrentDate(2),
       with_release_type: '1|2|3',
-      with_genres: '',
+      with_genres: genre,
       include_adult: false,
     };
     dispatch(getDataAsync(path, actionTypes.GET_NOW_PLAYING_MOVIES, queryParameters));

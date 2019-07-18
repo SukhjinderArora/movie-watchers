@@ -6,7 +6,9 @@ import SearchIcon from '../../UI/SearchIcon/SearchIcon';
 
 class Navbar extends Component {
   state = {
-    searchInput: ''
+    searchInput: '',
+    isDropdownOpen: false,
+    activeDropdown: 1
   };
 
   onSubmitSearchHandler = (e) => {
@@ -26,7 +28,30 @@ class Navbar extends Component {
     });
   };
 
+  onMouseEnterHandler = (activeDropdown) => {
+    this.setState({
+      isDropdownOpen: true,
+      activeDropdown
+    });
+  };
+
+  onMouseLeaveHandler = (activeDropdown) => {
+    this.setState({
+      isDropdownOpen: false,
+      activeDropdown
+    });
+  };
+
+  onMenuItemClickHandler = () => {
+    this.setState({
+      isDropdownOpen: false
+    });
+  };
+
   render() {
+    const dropDownLeft = (this.state.activeDropdown === 1 && this.state.isDropdownOpen) ? classes.DropdownOpen : classes.DropdownClosed;
+    const dropDownRight = (this.state.activeDropdown === 2 && this.state.isDropdownOpen) ? classes.DropdownOpen : classes.DropdownClosed;
+    // const dropDown = this.state.isDropdownOpen ? classes.DropdownOpen : classes.DropdownClosed
     return (
       <nav className={classes.Navbar}>
         <Link to="/" className={classes.Logo}>MovieWatchers</Link>
@@ -43,36 +68,36 @@ class Navbar extends Component {
             </button>
           </form>
           <ul className={classes.NavList}>
-            <li className={classes.NavItem}>
+            <li className={classes.NavItem} onMouseEnter={(e) => this.onMouseEnterHandler(1)} onMouseLeave={(e) => this.onMouseLeaveHandler(1)}>
               <NavLink to="/movies" activeClassName={classes.NavItem_active}>Movies</NavLink>
-              <ul className={[classes.Dropdown, classes.DropdownLeft].join(' ')}>
-                <li>
+              <ul className={[classes.Dropdown, classes.DropdownLeft, dropDownLeft].join(' ')}>
+                <li onClick={this.onMenuItemClickHandler}>
                   <NavLink to="/movies/popular" activeClassName={classes.Dropdown_link_active}>Popular</NavLink>
                 </li>
-                <li>
+                <li onClick={this.onMenuItemClickHandler}>
                   <NavLink to="/movies/topRated" activeClassName={classes.Dropdown_link_active}>Top Rated</NavLink>
                 </li>
-                <li>
+                <li onClick={this.onMenuItemClickHandler}>
                   <NavLink to="/movies/upcoming" activeClassName={classes.Dropdown_link_active}>Upcoming</NavLink>
                 </li>
-                <li>
+                <li onClick={this.onMenuItemClickHandler}>
                   <NavLink to="/movies/nowPlaying" activeClassName={classes.Dropdown_link_active}>Now Playing</NavLink>
                 </li>
               </ul>
             </li>
-            <li className={classes.NavItem}>
+            <li className={classes.NavItem} onMouseEnter={(e) => this.onMouseEnterHandler(2)} onMouseLeave={(e) => this.onMouseLeaveHandler(2)}>
               <NavLink to="/tv" activeClassName={classes.NavItem_active}>TV</NavLink>
-              <ul className={[classes.Dropdown, classes.DropdownRight].join(' ')}>
-                <li>
+            <ul className={[classes.Dropdown, classes.DropdownRight, dropDownRight].join(' ')}>
+                <li onClick={this.onMenuItemClickHandler}>
                   <NavLink to="/tv/popular" activeClassName={classes.Dropdown_link_active}>Popular</NavLink>
                 </li>
-                <li>
+                <li onClick={this.onMenuItemClickHandler}>
                   <NavLink to="/tv/topRated" activeClassName={classes.Dropdown_link_active}>Top Rated</NavLink>
                 </li>
-                <li>
+                <li onClick={this.onMenuItemClickHandler}>
                   <NavLink to="/tv/onAir" activeClassName={classes.Dropdown_link_active}>On Air</NavLink>
                 </li>
-                <li>
+                <li onClick={this.onMenuItemClickHandler}>
                   <NavLink to="/tv/onAirToday" activeClassName={classes.Dropdown_link_active}>On Air Today</NavLink>
                 </li>
               </ul>

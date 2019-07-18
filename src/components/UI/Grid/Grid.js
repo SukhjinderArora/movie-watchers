@@ -17,7 +17,6 @@ class Grid extends Component {
 
     return (
       <div className={classes.GridContainer}>
-        <h2 className={classes.title}>{this.props.data.title}</h2>
         <div className={classes.Grid}>
           {cards}
         </div> 

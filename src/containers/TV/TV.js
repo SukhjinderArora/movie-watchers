@@ -6,9 +6,12 @@ import * as tvAction from '../../store/actions/tvAction';
 import Grid from '../../components/UI/Grid/Grid';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
+import classes from './TV.module.css';
+
 class TV extends Component {
   state = {
     hasMore: true,
+    selectedGenre: ''
   };
 
   loadData = () => {
@@ -17,16 +20,16 @@ class TV extends Component {
     });
     switch (this.props.type) {
       case 'popularTV':
-        this.props.getPopularTV();
+        this.props.getPopularTV(this.state.selectedGenre);
         break;
       case 'topRatedTV':
-        this.props.getTopRatedTV();
+        this.props.getTopRatedTV(this.state.selectedGenre);
         break;
       case 'onTheAirTV':
-        this.props.getOnAirTV();
+        this.props.getOnAirTV(this.state.selectedGenre);
         break;
       case 'onTheAirTodayTV':
-        this.props.getAiringToday();
+        this.props.getAiringToday(this.state.selectedGenre);
         break;
       default:
         return;
@@ -55,6 +58,10 @@ class TV extends Component {
   componentDidMount() {
     window.scrollTo(0, 0)
     window.addEventListener('scroll', this.debouncedFunction);
+    if (!this.props.genres) {
+      this.props.getTVGenres();
+    }
+    this.props.clearData();
     this.loadData();
   }
 
@@ -62,12 +69,50 @@ class TV extends Component {
     window.removeEventListener('scroll', this.debouncedFunction, false);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.selectedGenre !== this.state.selectedGenre) {
+      this.props.clearData();
+      this.loadData();
+    }
+  }
+
+  onSelectChangeHandler = (e) => {
+    this.setState({
+      selectedGenre: e.target.value
+    });
+  }
+
   render() {
+    // const { data } = this.props;
+    // if (data.results.length === 0) return <Spinner />;
+    // return (
+    //   <div>
+    //     <Grid data={data.results} />
+    //   </div>
+    // );
     const { data } = this.props;
-    if (data.results.length === 0) return <Spinner />;
+    const { genres } = this.props;
+    if (data.results.length === 0 && data.total_results === -1) return <Spinner />;
+    let components;
+    if (data.total_results === 0) {
+      components = <h1 className={classes.resultNotFound}>No Results Found</h1>;
+    } else {
+      components = <Grid data={data.results} />;
+    }
+    
     return (
       <div>
-        <Grid data={data.results} />
+        <header className={classes.header}>
+          <h1>{this.props.title}</h1>
+          <div className={classes.selectBox}>
+            <label htmlFor="genres">Genre:</label>
+            <select name="genres" id="genres" onChange={this.onSelectChangeHandler} value={this.state.selectedGenre}>
+              <option value="">All</option>
+               {genres ? genres.map(genre => <option value={genre.id} key={genre.id}>{genre.name}</option>) : null}
+            </select>
+          </div>
+        </header>
+        {components}
       </div>
     );
   }
@@ -75,16 +120,19 @@ class TV extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    data: state.tv[ownProps.type]
+    data: state.tv[ownProps.type],
+    genres: state.tv.genres
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPopularTV: () => dispatch(tvAction.getPopularTV()),
-    getTopRatedTV: () => dispatch(tvAction.getTopRatedTV()),
-    getOnAirTV: () => dispatch(tvAction.getOnTheAirTV()),
-    getAiringToday: () => dispatch(tvAction.getOnTheAirTodayTV())
+    getPopularTV: (genre) => dispatch(tvAction.getPopularTV(genre)),
+    getTopRatedTV: (genre) => dispatch(tvAction.getTopRatedTV(genre)),
+    getOnAirTV: (genre) => dispatch(tvAction.getOnTheAirTV(genre)),
+    getAiringToday: (genre) => dispatch(tvAction.getOnTheAirTodayTV(genre)),
+    getTVGenres: () => dispatch(tvAction.getTVGenres()),
+    clearData: () => dispatch(tvAction.resetTVData()),
   }
 };
 

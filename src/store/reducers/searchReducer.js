@@ -4,9 +4,9 @@ const initialState = {
   searchResults: {
     page: 0,
     results: [],
-    total_pages: 0
-  },
-  error: ''
+    total_pages: 0,
+    total_results: -1
+  }
 };
 
 const updateState = (prevState, newData) => {
@@ -16,7 +16,8 @@ const updateState = (prevState, newData) => {
   return {
     page: newData.page,
     results: [...results, ...newResults],
-    total_pages: newData.total_pages
+    total_pages: newData.total_pages,
+    total_results: newData.total_results
   };
 };
 
@@ -24,23 +25,17 @@ const resetState = () => {
   return {
     page: 0,
     results: [],
-    total_pages: 0
+    total_pages: 0,
+    total_results: -1
   };
 };
 
 const searchReducer = (state = initialState, action) => {
   switch(action.type) {
     case actionTypes.SEARCH_MOVIE_TV:
-      if(state.searchResults.results.length === 0 && action.data.results.length === 0) {
-        return {
-          ...state,
-          error: 'No search results found'
-        };
-      }
       return {
         ...state,
         searchResults: updateState(state.searchResults, action.data),
-        error: ''
       };
     case actionTypes.CLEAR_SEARCH_RESULTS:
       return {
