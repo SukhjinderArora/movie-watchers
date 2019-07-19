@@ -45,7 +45,7 @@ class TV extends Component {
 
     if (!hasMore) return;
 
-    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500)) {
+    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 700)) {
       this.loadData();
     }
   };

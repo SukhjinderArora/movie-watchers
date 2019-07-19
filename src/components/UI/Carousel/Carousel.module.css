@@ -22,7 +22,7 @@
 }
 
 .slideChangeBtn:hover {
-  transform: scale(1.1);
+  transform: scale(1.1) translateY(-50%);
 }
 
 .slideChangeBtn:focus {
@@ -33,12 +33,14 @@
   position: absolute;
   top: 50%;
   left: 0;
+  transform: translateY(-50%);
 }
 
 .btnRight {
   position: absolute;
   top: 50%;
   right: 0;
+  transform: translateY(-50%);
 }
 
 .arrow {

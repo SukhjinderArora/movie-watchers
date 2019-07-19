@@ -39,7 +39,7 @@ const MediaInfo = (props) => {
   if (castArray.length > 0 && castArray.length <= 5) {
     cast = (
       <div className={classes.castContainer}>
-        <h2 className={classes.title}>Cast</h2>
+        <h2 className={classes.subHeading}>Cast</h2>
         {castArray}
       </div>
     );
@@ -51,10 +51,13 @@ const MediaInfo = (props) => {
       1200: { items: 7 } 
     };
     cast = (
-      <Carousel 
-        title="Cast" 
-        data={castArray} 
-        responsive={responsive}/>
+      <div className={classes.castContainer}>
+        <h2 className={classes.subHeading}>Cast</h2>
+        <Carousel
+          title="Cast"
+          data={castArray}
+          responsive={responsive} />
+      </div>
     );
   }
 
@@ -82,7 +85,12 @@ const MediaInfo = (props) => {
         onDragStart={(e) => e.preventDefault()}
         data={dataItem} />;
     });
-    recommendationsCarousel = <Carousel title="Recommendations" data={recommendations} responsive={responsive} />;
+    recommendationsCarousel = (
+      <div>
+        <h2 className={classes.subHeading}>Recommendations</h2>
+        <Carousel title="Recommendations" data={recommendations} responsive={responsive} />
+      </div>
+    );
   }
 
   let image;

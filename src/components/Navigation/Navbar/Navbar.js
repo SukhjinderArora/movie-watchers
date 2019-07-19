@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link, NavLink, withRouter} from 'react-router-dom';
 
 import classes from './Navbar.module.css';
-import SearchIcon from '../../UI/SearchIcon/SearchIcon';
+import SearchIcon from '../../UI/Icons/SearchIcon/SearchIcon';
 
 class Navbar extends Component {
   state = {

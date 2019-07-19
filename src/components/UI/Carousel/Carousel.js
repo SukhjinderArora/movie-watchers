@@ -12,7 +12,7 @@ class Carousel extends Component {
   render() {
     return (
       <div className={classes.Carousel}>
-        <h2 className={classes.title}>{this.props.title}</h2>
+        {/* <h2 className={classes.title}>{this.props.title}</h2> */}
         <AliceCarousel 
           dotsDisabled={true}
           buttonsDisabled={true}
