@@ -1,3 +1,7 @@
+.MoviesContainer {
+  margin-bottom: 10rem;
+}
+
 .header {
   display: flex;
   justify-content: space-between;

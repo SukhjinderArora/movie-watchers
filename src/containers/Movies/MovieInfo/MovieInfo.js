@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getMovieDetails, resetMovieData } from '../../store/actions/moviesAction';
-import { currencyFormatter } from '../../utils/utils';
+import { getMovieDetails, resetMovieData } from '../../../store/actions/moviesAction';
+import { currencyFormatter } from '../../../utils/utils';
 
-import MediaInfo from '../../components/MediaInfo/MediaInfo';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import MediaInfo from '../../../components/MediaInfo/MediaInfo';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
 class MovieInfo extends Component {
   getMovie = () => {

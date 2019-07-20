@@ -99,7 +99,7 @@ class TV extends Component {
       );
     }
     return (
-      <div>
+      <div className={classes.TVContainer}>
         <header className={classes.header}>
           <h1>{this.props.title}</h1>
           <div className={classes.selectBox}>

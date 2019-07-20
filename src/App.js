@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import { Route, Switch } from 'react-router-dom';
 
-// import * as configActions from './store/actions/configActions';
-// import * as genreActions from './store/actions/genreActions';
 import { getMovieGenres } from './store/actions/moviesAction';
 import { getTVGenres } from './store/actions/tvAction';
 
@@ -12,14 +10,13 @@ import Footer from './components/Footer/Footer';
 import Home from './containers/Home/Home';
 import Search from './containers/Search/Search';
 import Movies from './containers/Movies/Movies';
-import MovieInfo from './containers/Movies/MovieInfo';
+import MovieInfo from './containers/Movies/MovieInfo/MovieInfo';
 import TV from './containers/TV/TV';
-import TVInfo from './containers/TV/TVInfo';
+import TVInfo from './containers/TV/TVInfo/TVInfo';
 import NotFound from './components/NotFound/NotFound';
 
 import './App.css';
 
-// https://github.com/express-labs/pure-react-carousel#-tutorial
 class App extends Component {
   componentDidMount() {
     this.props.getMovieGenres();

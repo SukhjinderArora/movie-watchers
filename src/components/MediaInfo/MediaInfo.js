@@ -120,7 +120,6 @@ const MediaInfo = (props) => {
       {cast}
       {video}
       {recommendationsCarousel}
-      {/* <Carousel title="Recommendations" data={recommendations} responsive={responsive} /> */}
     </div>
   );
 };

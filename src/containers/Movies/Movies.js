@@ -99,7 +99,7 @@ class Movies extends Component {
     }
 
     return (
-        <div>
+        <div className={classes.MoviesContainer}>
           <header className={classes.header}>
             <h1>{this.props.title}</h1>
             <div className={classes.selectBox}>
