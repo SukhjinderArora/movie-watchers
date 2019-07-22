@@ -13,7 +13,7 @@ const MediaInfo = (props) => {
   const { data } = props;
 
   const responsive = {
-    0: { items: 1 },
+    0: { items: 3 },
     767: { items: 2 },
     1023: { items: 3 },
     1200: { items: 4 }

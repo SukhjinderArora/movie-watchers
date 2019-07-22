@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import {Link, NavLink, withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import classes from './Navbar.module.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import SearchForm from '../SearchForm/SearchForm';
-import SearchIcon from '../../UI/Icons/SearchIcon/SearchIcon';
 
 class Navbar extends Component {
   state = {

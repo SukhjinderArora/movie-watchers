@@ -5,7 +5,7 @@ import classes from './NavigationItem.module.css';
 
 const NavigationItem = (props) => {
   return (
-    <li className={classes.NavigationItem} onMouseEnter={props.mouseEnterHandler} onMouseLeave={props.mouseLeaveHandler}>
+    <li className={classes.NavigationItem} onMouseEnter={props.mouseEnterHandler} onMouseLeave={props.mouseLeaveHandler} onClick={props.menuItemClickHandler}>
       <NavLink 
         to={props.link} 
         className={classes.NavLink}

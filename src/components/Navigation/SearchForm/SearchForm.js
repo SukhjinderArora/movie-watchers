@@ -1,6 +1,5 @@
 import React from 'react';
 
-import SearchIcon from '../../UI/Icons/SearchIcon/SearchIcon';
 import SearchButton from '../../UI/SearchButton/SearchButton';
 import classes from './SearchForm.module.css';
 

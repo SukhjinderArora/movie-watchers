@@ -10,6 +10,7 @@ const NavigationItems = (props) => {
       <NavigationItem 
         link="/movies" 
         linkName="Movies" 
+        menuItemClickHandler={props.menuItemClickHandler}
         mouseEnterHandler={() => props.mouseEnterHandler(1)}
         mouseLeaveHandler={props.mouseLeaveHandler} >
         <ul className={[classes.SubNavigationItems, (props.dropDownOpen && props.activeDropdown === 1) ? classes.Open : '' ].join(' ')}>
@@ -34,6 +35,7 @@ const NavigationItems = (props) => {
       <NavigationItem 
         link="/tv" 
         linkName="TV"
+        menuItemClickHandler={props.menuItemClickHandler}
         mouseEnterHandler={() => props.mouseEnterHandler(2)}
         mouseLeaveHandler={props.mouseLeaveHandler}>
         <ul className={[classes.SubNavigationItems, (props.dropDownOpen && props.activeDropdown === 2) ? classes.Open : ''].join(' ')}>
@@ -57,6 +59,14 @@ const NavigationItems = (props) => {
       </NavigationItem>
     </ul>
   );
+};
+
+NavigationItems.defaultProps = {
+  mouseEnterHandler: () => {},
+  mouseLeaveHandler: () => {},
+  dropDownOpen: true,
+  activeDropdown: 1,
+  menuItemClickHandler: () => {}
 };
 
 export default NavigationItems;

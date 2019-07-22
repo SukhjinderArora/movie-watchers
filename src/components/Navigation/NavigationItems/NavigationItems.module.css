@@ -6,21 +6,34 @@
 
 .SubNavigationItems {
   flex-direction: column;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   background: #fff;
-  text-align: center;
-  width: 0;
-  padding-top: 2rem; 
-  height: 0;
-  opacity: 0;
   overflow: hidden;
-  transition: height .4s, opacity .4s;
 }
 
-.Open {
-  width: 12rem;
-  height: 26rem;
-  opacity: 1;
+@media (min-width: 500px) {
+  .SubNavigationItems {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding-top: 2rem; 
+    height: 0;
+    width: 0;
+    opacity: 0;
+    transition: height .4s, opacity .4s;
+  }
+  .Open {
+    width: 12rem;
+    height: 26rem;
+    opacity: 1;
+ }
+}
+
+@media (max-width: 499px) {
+  .NavigationItems {
+    flex-direction: column;
+  }
+  .SubNavigationItems {
+    padding-top: 1rem;
+  }
 }

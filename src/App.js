@@ -6,8 +6,6 @@ import { getMovieGenres } from './store/actions/moviesAction';
 import { getTVGenres } from './store/actions/tvAction';
 
 import Layout from './containers/Layout/Layout';
-import Navbar from './components/Navigation/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
 import Home from './containers/Home/Home';
 import Search from './containers/Search/Search';
 import Movies from './containers/Movies/Movies';
