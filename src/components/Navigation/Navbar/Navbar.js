@@ -4,6 +4,7 @@ import {Link, NavLink, withRouter} from 'react-router-dom';
 import classes from './Navbar.module.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
+import SearchForm from '../SearchForm/SearchForm';
 import SearchIcon from '../../UI/Icons/SearchIcon/SearchIcon';
 
 class Navbar extends Component {
@@ -56,17 +57,10 @@ class Navbar extends Component {
           <Logo />
         </div>
         <div className={classes.Navigation}>
-          <form action="" onSubmit={this.onSubmitSearchHandler} className={classes.SearchForm}>
-            <input
-              type="text"
-              placeholder="Search Movies or TV Shows"
-              value={this.state.searchInput}
-              className={classes.SearchInput}
-              onChange={this.onInputChangeHandler} />
-            <button type="submit" className={classes.btnSearch}>
-              <SearchIcon color="#8e8e8e" width="18" height="18"/>
-            </button>
-          </form>
+          <SearchForm 
+            searchHandler={this.onSubmitSearchHandler} 
+            searchInput={this.state.searchInput} 
+            inputChangeHandler={this.onInputChangeHandler}/>
           <NavigationItems 
             mouseEnterHandler={this.onMouseEnterHandler} 
             mouseLeaveHandler={this.onMouseLeaveHandler}
