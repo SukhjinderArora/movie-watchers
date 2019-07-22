@@ -40,9 +40,7 @@ class Home extends Component {
     this.props.clearMovieData();
     this.props.clearTVData();
     window.scrollTo(0, 0);
-    if(this.props.loading) {
-      this.props.getData();
-    }
+    this.props.getData();
   }
 
   render() {
