@@ -37,6 +37,10 @@
 }
 
 @media (max-width: 499px) {
+  .Container {
+    margin-top: -2rem;
+  }
+
   .Container header a {
     margin-right: 1rem;
   }
