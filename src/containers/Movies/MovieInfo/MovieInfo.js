@@ -26,6 +26,10 @@ class MovieInfo extends Component {
     }
   }
 
+  onCardClickHandler = (path) => {
+    this.props.history.push(path);
+  };
+
   render() {
     if (!this.props.movie) return <Spinner />;
     const { movie } = this.props;
@@ -56,7 +60,7 @@ class MovieInfo extends Component {
       ]
     };
 
-    return <MediaInfo data={movieData} />;
+    return <MediaInfo data={movieData} onCardClickHandler={this.onCardClickHandler} />;
   }
 }
 

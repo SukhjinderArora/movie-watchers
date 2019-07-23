@@ -26,6 +26,10 @@ class TVInfo extends Component {
     }
   }
 
+  onCardClickHandler = (path) => {
+    this.props.history.push(path);
+  };
+
   render() {
     if (!this.props.tv) return <Spinner />;
     const { tv } = this.props;
@@ -58,7 +62,7 @@ class TVInfo extends Component {
       ]
     };
 
-    return <MediaInfo data={tvData} />;
+    return <MediaInfo data={tvData} onCardClickHandler={this.onCardClickHandler}/>;
   }
 }
 

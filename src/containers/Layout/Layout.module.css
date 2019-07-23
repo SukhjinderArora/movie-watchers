@@ -3,7 +3,6 @@
   min-height: 77vh;
   position: relative;
   padding: 0 3rem;
-  /* max-width: 120rem; */
 }
 
 @media (min-width: 500px) {
@@ -15,5 +14,9 @@
 @media (max-width: 499px) {
   .Navbar {
     display: none;
+  }
+  .Content {
+    margin-top: 4rem;
+    padding: 0 1rem;
   }
 }

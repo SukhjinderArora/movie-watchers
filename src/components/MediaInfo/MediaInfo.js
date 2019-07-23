@@ -36,16 +36,16 @@ const MediaInfo = (props) => {
   });
 
   let cast = null;
-  if (castArray.length > 0 && castArray.length <= 5) {
+  if ((castArray.length > 0 && castArray.length <= 5 && window.innerWidth >= 500) || (castArray.length < 2 && window.innerWidth < 500)) {
     cast = (
       <div className={classes.castContainer}>
         <h2 className={classes.subHeading}>Cast</h2>
         {castArray}
       </div>
     );
-  } else if(castArray.length >= 6) {
+  } else {
     const responsive = { 
-      0: { items: 1 },
+      0: { items: 2 },
       767: { items: 2 }, 
       1023: { items: 3 }, 
       1200: { items: 7 } 
@@ -83,6 +83,7 @@ const MediaInfo = (props) => {
         imgUrl={base_img_url + 'w300/' + dataItem.poster_path}
         key={dataItem.id}
         onDragStart={(e) => e.preventDefault()}
+        onCardClickHandler={props.onCardClickHandler}
         data={dataItem} />;
     });
     recommendationsCarousel = (

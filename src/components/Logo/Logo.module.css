@@ -6,7 +6,6 @@
   text-decoration: none;
 }
 
-.Logo a:hover,
-.active {
+.Logo a:hover {
   color: #55AA29;
 }
