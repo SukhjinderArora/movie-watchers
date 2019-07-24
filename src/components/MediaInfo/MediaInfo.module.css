@@ -9,11 +9,12 @@
 
 .poster {
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, .1);
-  width: 30rem;
+  flex: 1 0 30rem;
 }
 
 .infoContainer {
   margin-left: 5rem;
+  flex: 3 auto;
 }
 
 .title {
