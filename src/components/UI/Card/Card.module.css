@@ -1,17 +1,10 @@
 .Card {
   position: relative;
-  min-width: 30rem;
-  min-height: 45rem;
-  margin-right: 2rem;
+  width: 30rem;
+  height: 45rem;
+  /* margin-right: 2rem; */
   overflow: hidden;
   cursor: pointer;
-}
-
-.Poster {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem;
 }
 
 .Content {
@@ -38,37 +31,6 @@
   height: 100%;
   opacity: 1;
   background: rgba(0, 0, 0, .7);
-}
-
-.ImagePlaceHolder {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 30rem;
-  height: 45rem;
-  border-radius: 1rem;
-  background: rgb(235, 235, 235);
-  animation: placeHolderAnimation 1s linear infinite alternate;
-}
-
-@keyframes placeHolderAnimation {
-  0% {
-    opacity: .2;
-  }
-
-  50% {
-    opacity: .5;
-  }
-
-  100% {
-    opacity: 0.9;
-  }
-}
-
-.ImageLoaded {
-  opacity: 0;
-  height: 0;
-  width: 0;
 }
 
 .Title {
@@ -124,4 +86,15 @@
 .RatingIcon {
   width: 1.5rem;
   margin-left: 5px;
+}
+
+@media (max-width: 499px) {
+  .Card {
+    width: 10rem;
+    height: 15rem;
+  }
+
+  .Content {
+    display: none;
+  }
 }

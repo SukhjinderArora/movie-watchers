@@ -1,0 +1,11 @@
+.Logo a {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: #3e3d3d;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.Logo a:hover {
+  color: #55AA29;
+}

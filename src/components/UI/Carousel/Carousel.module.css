@@ -47,3 +47,9 @@
   width: 5rem;
   opacity: .9;
 }
+
+@media (max-width: 499px) {
+  .slideChangeBtn {
+    display: none;
+  }
+}

@@ -1,0 +1,17 @@
+.ToggleButton {
+    width: 3rem;
+    height: 4rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.ToggleButton div {
+    width: 75%;
+    height: 2px;
+    background-color: #55AA29;
+}

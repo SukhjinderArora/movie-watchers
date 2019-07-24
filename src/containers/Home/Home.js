@@ -17,21 +17,25 @@ import classes from './Home.module.css';
 
 class Home extends Component {
 
+  onCardClickHandler = (path) => {
+    this.props.history.push(path);
+  };
+
   transformData = (data) => {
     const imageUrl = base_img_url + 'w300/';
     const newData = data.slice(0, 19);
     return newData.map(dataItem => {
+      let imageUrl;
       if (!dataItem.poster_path) {
-        return <Card 
-                  imgUrl={placeholderImg} 
-                  key={dataItem.id}  
-                  data={dataItem} 
-                  onDragStart={(e) => e.preventDefault()}/>;
+        imageUrl = placeholderImg;
+      } else {
+          imageUrl = `${base_img_url}w300/${dataItem.poster_path}`;
       }
       return <Card
-        imgUrl={imageUrl + dataItem.poster_path}
+        imgUrl={imageUrl}
         key={dataItem.id}
         onDragStart={(e) => e.preventDefault()}
+        onCardClickHandler={this.onCardClickHandler}
         data={dataItem} />
     });
   };
@@ -40,15 +44,13 @@ class Home extends Component {
     this.props.clearMovieData();
     this.props.clearTVData();
     window.scrollTo(0, 0);
-    if(this.props.loading) {
-      this.props.getData();
-    }
+    this.props.getData();
   }
 
   render() {
     if(this.props.loading) return <Spinner />;
     const responsive = {
-      0: { items: 1 },
+      0: { items: 3 },
       767: { items: 2 },
       1023: { items: 3 },
       1200: { items: 4 }

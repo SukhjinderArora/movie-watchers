@@ -40,3 +40,17 @@
   color: rgba(0, 0, 0, 0.8);
 }
 
+@media (max-width: 500px) {
+  .Footer {
+    flex-direction: column;
+    height: 10rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .TMDBLogo {
+    width: 10rem;
+    align-self: center;
+  }
+}
+

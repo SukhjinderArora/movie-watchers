@@ -19,3 +19,7 @@
 .title span {
   font-weight: 700;
 }
+
+.SearchForm {
+  display: none;
+}

@@ -6,12 +6,17 @@ import queryString from 'query-string';
 import { getSearchResults, clearSearchResults } from '../../store/actions/searchAction';
 import Grid from '../../components/UI/Grid/Grid';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import SearchForm from '../../components/Navigation/SearchForm/SearchForm';
 import classes from './Search.module.css';
 
 class Search extends Component {
 
   state = {
     hasMore: true,
+  };
+
+  onCardClickHandler = (path) => {
+    this.props.history.push(path);
   };
 
   loadData = () => {
@@ -64,7 +69,9 @@ class Search extends Component {
     const { searchResults } = this.props;
     const { query } = queryString.parse(this.props.location.search);
     let components;
-    if (searchResults.results.length === 0 && searchResults.total_results === -1) {
+    if(query.trim() === '') {
+      components = null;
+    } else if (searchResults.results.length === 0 && searchResults.total_results === -1) {
       components = <Spinner />;
     } else if (searchResults.results.length === 0 && searchResults.total_results === 0) {
       components = (
@@ -74,7 +81,7 @@ class Search extends Component {
       components = (
         <>
           <h1 className={classes.title}>Search Results for <span>{query}</span>:</h1>
-          <Grid data={searchResults.results} />
+          <Grid data={searchResults.results} onClickHandler={this.onCardClickHandler}/>
           {this.props.searchResults.page < this.props.searchResults.total_pages ? <Spinner /> : null}
         </>
       );

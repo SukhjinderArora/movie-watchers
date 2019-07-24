@@ -1,0 +1,20 @@
+.NavLink {
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: rgba(0, 0, 0, .7);
+    display: block;
+    padding: 1.5rem .5rem;
+    margin: 0.5rem 0;
+}
+
+.NavLink:hover,
+.active {
+  background: #55AA29;
+  color: rgba(255, 255, 255, .7);
+}
+
+@media (max-width: 499px) {
+  .NavLink {
+    padding: 1rem .5rem;
+  }
+}

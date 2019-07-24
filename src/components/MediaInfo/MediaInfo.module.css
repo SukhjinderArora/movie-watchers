@@ -9,12 +9,11 @@
 
 .poster {
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, .1);
-  flex: 1;
+  width: 30rem;
 }
 
 .infoContainer {
   margin-left: 5rem;
-  flex: 3;
 }
 
 .title {
@@ -30,12 +29,6 @@
   margin-bottom: 2rem; 
   color: rgba(0, 0, 0, .9);
 }
-
-/* .subtitle {
-  font-size: 4rem;
-  color: rgba(0, 0, 0, .75);
-  margin-top: 2rem;
-} */
 
 .category {
   margin-top: .5rem;
@@ -108,4 +101,38 @@
     left: 0;
     width: 80%;
     height: 100%;
+}
+
+@media (max-width: 499px) {
+  .MediaInfo {
+    padding: 2rem 1rem;
+  }
+  .FlexContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .poster {
+    width: 20rem;
+    align-self: center;
+  }
+
+  .infoContainer {
+    margin-left: 0;
+    margin-top: 3rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .videoContainer {
+    height: 30rem;
+    margin-bottom: 1rem;
+  }
+
+  .video {
+    width: 100%;
+    height: 100%;
+  }
 }

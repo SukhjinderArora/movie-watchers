@@ -12,7 +12,6 @@ class Carousel extends Component {
   render() {
     return (
       <div className={classes.Carousel}>
-        {/* <h2 className={classes.title}>{this.props.title}</h2> */}
         <AliceCarousel 
           dotsDisabled={true}
           buttonsDisabled={true}
@@ -22,6 +21,7 @@ class Carousel extends Component {
           infinite={true}
           disableAutoPlayOnAction={true}
           stopAutoPlayOnHover={true}
+          stagePadding={{ paddingLeft: 10, paddingRight: 15, }}
           ref={(el) => (this.Carousel = el)} />
         <button 
           onClick={() => this.Carousel._slidePrev()} 

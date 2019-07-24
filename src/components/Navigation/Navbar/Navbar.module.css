@@ -15,16 +15,7 @@
 }
 
 .Logo {
-  font-size: 2rem;
-  letter-spacing: 1px;
-  color: #3e3d3d;
-  font-weight: 700;
-  text-decoration: none;
   flex: 1;
-}
-
-.Logo:hover {
-  color: #55AA29;
 }
 
 .Navigation {
@@ -63,90 +54,4 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-}
-
-.NavList {
-  display: flex;
-  list-style: none;
-  font-size: 1.6rem;
-}
-
-.NavItem {
-  color: rgba(0,0,0,.7);
-  position: relative;
-  margin-right: 2rem;
-}
-
-.NavItem > a {
-  color: rgba(0,0,0,.7);
-  text-decoration: none;
-}
-
-.NavItem:hover > a,
-.NavItem > .NavItem_active {
-  color: rgba(0 , 0, 0, 1);
-  color: #55AA29;
-}
-
-.Dropdown {
-  /* display: none; */
-  /* height: 0;
-  opacity: 0;
-  width: 0; */
-  list-style: none;
-  position: absolute;
-  background: #fff;
-  text-align: center;
-  transition: height .4s, opacity .5s;
-  overflow: hidden;
-}
-
-.DropdownLeft{
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.DropdownRight {
-  right: 50%;
-  transform: translateX(50%);
-}
-
-/* .NavItem:hover .Dropdown {
-  height: 25.6rem;
-  opacity: 1;
-  width: 12rem;
-} */
-
-.DropdownClosed {
-  height: 0;
-  opacity: 0;
-  width: 0;
-}
-
-.DropdownOpen {
-  height: 25.6rem;
-  opacity: 1;
-  width: 12rem;
-}
-
-.Dropdown li a {
-  display: block;  
-  color: rgba(0,0,0,.7);
-  text-decoration: none;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  padding: 1rem 0.5rem;
-  cursor: pointer;
-  transition: background .2s, color .2s;
-}
-
-.Dropdown li a:hover,
-.Dropdown li .Dropdown_link_active {
-  background: #55AA29;
-  /* background: rgba(0, 0, 0, 0.4); */
-  color: rgba(255, 255, 255, 0.7)
-}
-
-.NavLink {
-  color: rgba(0,0,0,.7);
 }

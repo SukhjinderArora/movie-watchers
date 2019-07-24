@@ -1,0 +1,26 @@
+.NavigationItem {
+  margin-right: 2rem;
+  position: relative;
+}
+
+.NavLink {
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: rgba(0, 0, 0, .7);
+}
+
+.NavLink:hover,
+.active {
+  color: #55AA29;
+}
+
+@media (max-width: 499px) {
+  .NavigationItem {
+    margin-right: 0;
+    margin-top: 1rem;
+  }
+  .NavLink {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+}

@@ -13,6 +13,10 @@ class Movies extends Component {
     selectedGenre: ''
   };
 
+  onCardClickHandler = (path) => {
+    this.props.history.push(path);
+  };
+
   loadData = () => {
     this.setState({
       hasMore: this.props.data.page <= this.props.data.total_pages,
@@ -92,7 +96,7 @@ class Movies extends Component {
     } else {
       components = (
         <>
-          <Grid data={data.results} />
+          <Grid data={data.results} onClickHandler={this.onCardClickHandler}/>
           {this.props.data.page < this.props.data.total_pages ? <Spinner /> : null}
         </>
       );
