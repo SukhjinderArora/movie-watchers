@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { getMovieGenres } from './store/actions/moviesAction';
 import { getTVGenres } from './store/actions/tvAction';
@@ -45,6 +45,7 @@ class App extends Component {
               key="nowPlayingMovies"
               render={(props) => <Movies {...props} type="nowPlayingMovies" title="Now Playing" />} />
             <Route path="/movies/:title/:id" exact component={MovieInfo} />
+            <Redirect from="/movies" to="/movies/popular"/>
             <Route
               path="/tv/popular"
               exact
@@ -66,6 +67,7 @@ class App extends Component {
               key="onTheAirTodayTV"
               render={(props) => <TV {...props} type="onTheAirTodayTV" title="Airing Today" />} />
             <Route path="/tv/:title/:id" exact component={TVInfo} />
+            <Redirect from="/tv" to="/tv/popular" />
             <Route path="/search" component={Search} />
             <Route path="/" exact component={Home} />
             <Route component={NotFound} />
