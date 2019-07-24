@@ -22,7 +22,7 @@ MovieWatchers is an app in which you can:
 
 ### This app uses :
 
-* [TMDB](https://www.themoviedb.org/documentation/api) api to get all movie, tv and people related data.
+* [TMDB](https://www.themoviedb.org/documentation/api) API to get all movie, tv and people related data.
 
 * Favicon made by [mynamepong](https://www.flaticon.com/authors/mynamepong) from [flaticon.com](https://www.flaticon.com/).
 
