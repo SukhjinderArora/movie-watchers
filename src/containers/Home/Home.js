@@ -58,6 +58,7 @@ class Home extends Component {
 
     return (
       <div className={classes.Container}>
+        <Spinner />
         <div>
           <header>
             <h2 className={classes.title}>Popular Movies</h2>

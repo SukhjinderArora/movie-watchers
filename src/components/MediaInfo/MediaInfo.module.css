@@ -25,6 +25,7 @@
 .overview {
   font-size: 1.8rem;
   line-height: 2.4rem;
+  text-align: justify;
   margin-top: 1rem;
   margin-bottom: 2rem; 
   color: rgba(0, 0, 0, .9);
