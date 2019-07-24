@@ -22,7 +22,6 @@ class Home extends Component {
   };
 
   transformData = (data) => {
-    const imageUrl = base_img_url + 'w300/';
     const newData = data.slice(0, 19);
     return newData.map(dataItem => {
       let imageUrl;

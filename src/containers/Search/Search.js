@@ -6,7 +6,6 @@ import queryString from 'query-string';
 import { getSearchResults, clearSearchResults } from '../../store/actions/searchAction';
 import Grid from '../../components/UI/Grid/Grid';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import SearchForm from '../../components/Navigation/SearchForm/SearchForm';
 import classes from './Search.module.css';
 
 class Search extends Component {
