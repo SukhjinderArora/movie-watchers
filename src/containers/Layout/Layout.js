@@ -5,6 +5,7 @@ import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import Navbar from '../../components/Navigation/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+
 import classes from './Layout.module.css';
 
 class Layout extends Component {
@@ -78,8 +79,7 @@ class Layout extends Component {
             activeDropdown={this.state.activeDropdown}
             onSubmitSearchHandler={this.onSubmitSearchHandler}
             searchInput={this.state.searchInput}
-            onInputChangeHandler={this.onInputChangeHandler}
-            />
+            onInputChangeHandler={this.onInputChangeHandler}/>
         </div>
         <SideDrawer open={this.state.isSideDrawerOpen} sideDrawerCloseHandler={this.sideDrawerCloseHandler}/>
         <main className={classes.Content}>

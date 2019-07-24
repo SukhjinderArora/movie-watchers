@@ -14,8 +14,6 @@ import TV from './containers/TV/TV';
 import TVInfo from './containers/TV/TVInfo/TVInfo';
 import NotFound from './components/NotFound/NotFound';
 
-import './App.css';
-
 class App extends Component {
   componentDidMount() {
     this.props.getMovieGenres();
