@@ -70,7 +70,7 @@ class Search extends Component {
 
   onSubmitSearchHandler = (e) => {
     e.preventDefault();
-    this.props.history.push({
+    this.props.history.replace({
       pathname: '/search',
       search: `?query=${encodeURIComponent(this.state.searchInput)}`,
     });
