@@ -24,3 +24,13 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+@media (max-width: 499px) {
+  .SearchForm {
+    margin-right: 0;
+  }
+  .SearchInput {
+    width: 100%;
+    padding: 1rem 1.5rem;
+  } 
+}

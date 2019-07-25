@@ -6,12 +6,14 @@ import queryString from 'query-string';
 import { getSearchResults, clearSearchResults } from '../../store/actions/searchAction';
 import Grid from '../../components/UI/Grid/Grid';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import SearchForm from '../../components/Navigation/SearchForm/SearchForm';
 import classes from './Search.module.css';
 
 class Search extends Component {
 
   state = {
     hasMore: true,
+    searchInput: ''
   };
 
   onCardClickHandler = (path) => {
@@ -20,10 +22,12 @@ class Search extends Component {
 
   loadData = () => {
     const { query } = queryString.parse(this.props.location.search);
-    this.props.search(query);
-    this.setState({
-      hasMore: this.props.searchResults.page <= this.props.searchResults.total_pages
-    });
+    if(query) {
+      this.props.search(query);
+      this.setState({
+        hasMore: this.props.searchResults.page <= this.props.searchResults.total_pages
+      });
+    }
   };
 
   handleScroll = () => {
@@ -64,11 +68,27 @@ class Search extends Component {
     window.removeEventListener('scroll', this.debouncedFunction, false);
   }
 
+  onSubmitSearchHandler = (e) => {
+    e.preventDefault();
+    this.props.history.push({
+      pathname: '/search',
+      search: `?query=${encodeURIComponent(this.state.searchInput)}`,
+    });
+  };
+
+  onInputChangeHandler = (e) => {
+    this.setState({
+      searchInput: e.target.value,
+    });
+  };
+
   render() {
     const { searchResults } = this.props;
     const { query } = queryString.parse(this.props.location.search);
     let components;
-    if(query.trim() === '') {
+    if (!query) {
+      components = null;
+    } else if(query.trim() === '') {
       components = null;
     } else if (searchResults.results.length === 0 && searchResults.total_results === -1) {
       components = <Spinner />;
@@ -87,6 +107,12 @@ class Search extends Component {
     }
     return (
       <div className={classes.SearchContainer}>
+        <div className={classes.SearchForm}>
+          <SearchForm
+            inputChangeHandler={this.onInputChangeHandler}
+            searchHandler={this.onSubmitSearchHandler}
+            searchInput={this.state.searchInput} />
+        </div>
         {components}
       </div>
     );

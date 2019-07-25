@@ -27,3 +27,9 @@
 .SearchForm {
   display: none;
 }
+
+@media (max-width: 499px) {
+  .SearchForm {
+    display: block;
+  }
+}

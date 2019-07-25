@@ -15,7 +15,7 @@ const Toolbar = (props) => {
       <div className={classes.Logo}>
         <Logo />
       </div>
-      <SearchButton color="#55AA29" width="18" height="18" onClickHandler={() => {}} />
+      <SearchButton color="#55AA29" width="18" height="18" onClickHandler={props.searchButtonClicked} />
     </header>
   );
 };

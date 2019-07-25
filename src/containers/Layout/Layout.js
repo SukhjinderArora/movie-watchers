@@ -64,11 +64,15 @@ class Layout extends Component {
     });
   };
 
+  onSearchButtonClickHandler = () => {
+    this.props.history.push('/search');
+  };
+
   render() {
     return (
       <div>
         <div className={classes.Toolbar}>
-          <Toolbar toggleButtonClickHandler={this.onToggleButtonClickHandler} />
+          <Toolbar toggleButtonClickHandler={this.onToggleButtonClickHandler} searchButtonClicked={this.onSearchButtonClickHandler}/>
         </div>
         <div className={classes.Navbar}>
           <Navbar 
