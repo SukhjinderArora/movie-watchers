@@ -31,6 +31,11 @@
   }
   .SearchInput {
     width: 100%;
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 1rem;
+    font-size: 1.6rem;
+    box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
   } 
+  .SearchButton {
+    right: 10px;
+  }
 }

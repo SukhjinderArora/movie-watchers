@@ -111,7 +111,8 @@ class Search extends Component {
           <SearchForm
             inputChangeHandler={this.onInputChangeHandler}
             searchHandler={this.onSubmitSearchHandler}
-            searchInput={this.state.searchInput} />
+            searchInput={this.state.searchInput}
+            autoFocus />
         </div>
         {components}
       </div>
