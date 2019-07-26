@@ -9,6 +9,7 @@ MovieWatchers is an app in which you can:
 * Get the list of movies that are in the cinemas right now.
 * Get the list of on air TV shows.
 * Get the list of TV shows airing today.
+* Filter movies and TV shows by genre.
 * Get recommendations that are similar to a movie or TV show in the Movie or TV show details page.
 
 ### Check it out here: [MovieWatchers](https://moviewatchers.netlify.com/)
