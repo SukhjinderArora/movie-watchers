@@ -48,7 +48,6 @@ export const getTopRatedMovies = (genre) => {
 export const getUpcomingMovies = (genre) => {
   return (dispatch, getState) => {
     const path = '/discover/movie';
-    // console.log(getState())
     const pageNumber = getState().movies.upcomingMovies.page;
     const queryParameters = {
       page: pageNumber + 1,
@@ -68,7 +67,6 @@ export const getUpcomingMovies = (genre) => {
 export const getNowPlayingMovies = (genre) => {
   return (dispatch, getState) => {
     const path = '/discover/movie';
-    // console.log(getState())
     const pageNumber = getState().movies.nowPlayingMovies.page;
     const queryParameters = {
       page: pageNumber + 1,

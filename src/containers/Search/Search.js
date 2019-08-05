@@ -13,7 +13,6 @@ class Search extends Component {
 
   state = {
     hasMore: true,
-    searchInput: ''
   };
 
   onCardClickHandler = (path) => {
@@ -68,27 +67,12 @@ class Search extends Component {
     window.removeEventListener('scroll', this.debouncedFunction, false);
   }
 
-  onSubmitSearchHandler = (e) => {
-    e.preventDefault();
-    this.props.history.replace({
-      pathname: '/search',
-      search: `?query=${encodeURIComponent(this.state.searchInput)}`,
-    });
-  };
-
-  onInputChangeHandler = (e) => {
-    this.setState({
-      searchInput: e.target.value,
-    });
-  };
 
   render() {
     const { searchResults } = this.props;
     const { query } = queryString.parse(this.props.location.search);
     let components;
-    if (!query) {
-      components = null;
-    } else if(query.trim() === '') {
+    if (!query || query.trim() === '') {
       components = null;
     } else if (searchResults.results.length === 0 && searchResults.total_results === -1) {
       components = <Spinner />;
@@ -108,11 +92,7 @@ class Search extends Component {
     return (
       <div className={classes.SearchContainer}>
         <div className={classes.SearchForm}>
-          <SearchForm
-            inputChangeHandler={this.onInputChangeHandler}
-            searchHandler={this.onSubmitSearchHandler}
-            searchInput={this.state.searchInput}
-            autoFocus />
+          <SearchForm autoFocus />
         </div>
         {components}
       </div>

@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import SearchButton from '../../UI/SearchButton/SearchButton';
 import classes from './SearchForm.module.css';
 
 const SearchForm = (props) => {
+  const [ searchInput, setSearchInput] = useState('');
+  const onInputChangeHandler = (e) => {
+    setSearchInput(e.target.value);
+  };
+  const onSubmitSearchHandler = (e) => {
+    e.preventDefault();
+    props.history.push({
+      pathname: '/search',
+      search: `?query=${encodeURIComponent(searchInput)}`,
+    });
+    setSearchInput('');
+  };
   return (
-    <form action="" onSubmit={props.searchHandler} className={classes.SearchForm}>
+    <form action="" onSubmit={onSubmitSearchHandler} className={classes.SearchForm}>
       <input
         type="text"
         placeholder="Search Movies or TV Shows"
-        value={props.searchInput}
+        value={searchInput}
         className={classes.SearchInput}
-        onChange={props.inputChangeHandler}
+        onChange={onInputChangeHandler}
         autoFocus={props.autoFocus} />
       <div className={classes.SearchButton}>
         <SearchButton color="#8e8e8e" width="18" height="18" />
@@ -20,4 +33,4 @@ const SearchForm = (props) => {
   );
 };
 
-export default SearchForm;
+export default withRouter(SearchForm);

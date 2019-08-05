@@ -10,7 +10,6 @@ import classes from './Layout.module.css';
 
 class Layout extends Component {
   state = {
-    searchInput: '',
     isDropdownOpen: false,
     activeDropdown: 1,
     isSideDrawerOpen: false
@@ -47,23 +46,6 @@ class Layout extends Component {
     });
   };
 
-  onSubmitSearchHandler = (e) => {
-    e.preventDefault();
-    this.props.history.push({
-      pathname: '/search',
-      search: `?query=${encodeURIComponent(this.state.searchInput)}`,
-    });
-    this.setState({
-      searchInput: ''
-    });
-  };
-
-  onInputChangeHandler = (e) => {
-    this.setState({
-      searchInput: e.target.value
-    });
-  };
-
   onSearchButtonClickHandler = () => {
     this.props.history.push('/search');
   };
@@ -80,10 +62,7 @@ class Layout extends Component {
             onMouseLeaveHandler={this.onMouseLeaveHandler}
             onMenuItemClickHandler={this.onMenuItemClickHandler}
             isDropdownOpen={this.state.isDropdownOpen}
-            activeDropdown={this.state.activeDropdown}
-            onSubmitSearchHandler={this.onSubmitSearchHandler}
-            searchInput={this.state.searchInput}
-            onInputChangeHandler={this.onInputChangeHandler}/>
+            activeDropdown={this.state.activeDropdown} />
         </div>
         <SideDrawer open={this.state.isSideDrawerOpen} sideDrawerCloseHandler={this.sideDrawerCloseHandler}/>
         <main className={classes.Content}>

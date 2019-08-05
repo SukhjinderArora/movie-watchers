@@ -12,10 +12,7 @@ const Navbar = (props) => {
         <Logo />
       </div>
       <div className={classes.Navigation}>
-        <SearchForm
-          searchHandler={props.onSubmitSearchHandler}
-          searchInput={props.searchInput}
-          inputChangeHandler={props.onInputChangeHandler} />
+        <SearchForm />
         <NavigationItems
           mouseEnterHandler={props.onMouseEnterHandler}
           mouseLeaveHandler={props.onMouseLeaveHandler}
