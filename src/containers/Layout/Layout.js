@@ -10,28 +10,7 @@ import classes from './Layout.module.css';
 
 class Layout extends Component {
   state = {
-    isDropdownOpen: false,
-    activeDropdown: 1,
     isSideDrawerOpen: false
-  };
-
-  onMouseEnterHandler = (activeDropdown) => {
-    this.setState({
-      isDropdownOpen: true,
-      activeDropdown
-    });
-  };
-
-  onMouseLeaveHandler = () => {
-    this.setState({
-      isDropdownOpen: false,
-    });
-  };
-
-  onMenuItemClickHandler = () => {
-    this.setState({
-      isDropdownOpen: false
-    });
   };
 
   onToggleButtonClickHandler = () => {
@@ -46,23 +25,14 @@ class Layout extends Component {
     });
   };
 
-  onSearchButtonClickHandler = () => {
-    this.props.history.push('/search');
-  };
-
   render() {
     return (
       <div>
         <div className={classes.Toolbar}>
-          <Toolbar toggleButtonClickHandler={this.onToggleButtonClickHandler} searchButtonClicked={this.onSearchButtonClickHandler}/>
+          <Toolbar toggleButtonClickHandler={this.onToggleButtonClickHandler} />
         </div>
         <div className={classes.Navbar}>
-          <Navbar 
-            onMouseEnterHandler={this.onMouseEnterHandler} 
-            onMouseLeaveHandler={this.onMouseLeaveHandler}
-            onMenuItemClickHandler={this.onMenuItemClickHandler}
-            isDropdownOpen={this.state.isDropdownOpen}
-            activeDropdown={this.state.activeDropdown} />
+          <Navbar />
         </div>
         <SideDrawer open={this.state.isSideDrawerOpen} sideDrawerCloseHandler={this.sideDrawerCloseHandler}/>
         <main className={classes.Content}>
