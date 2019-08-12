@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 
 import * as moviesAction from '../../store/actions/moviesAction';
+
+import HeaderWithGenreList from '../../components/HeaderWithGenreList/HeaderWithGenreList';
 import Grid from '../../components/UI/Grid/Grid';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './Movies.module.css';
@@ -104,16 +106,11 @@ class Movies extends Component {
 
     return (
         <div className={classes.MoviesContainer}>
-          <header className={classes.header}>
-            <h1>{this.props.title}</h1>
-            <div className={classes.selectBox}>
-              <label htmlFor="genres">Genre:</label>
-              <select name="genres" id="genres" onChange={this.onSelectChangeHandler} value={this.state.selectedGenre}>
-                <option value="">All</option>
-                {genres ? genres.map(genre => <option value={genre.id} key={genre.id}>{genre.name}</option>) : null}
-              </select>
-            </div>
-          </header>
+          <HeaderWithGenreList 
+            title={this.props.title} 
+            genreList={genres} 
+            selectedGenre={this.state.selectedGenre}
+            onSelectChangeHandler={this.onSelectChangeHandler} />
           {components}
         </div>
     );

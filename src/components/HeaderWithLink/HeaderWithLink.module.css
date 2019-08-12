@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem .5rem 1rem;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 2.2rem;
+  color: #212121;
+  line-height: 2;
+}
+
+.seeMoreLink {
+  position: relative;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: #000;
+}
+
+.seeMoreLink:hover,
+.seeMoreLink:active {
+  color: #55AA29;
+}
+
+.rightArrow svg {
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+
+@media (max-width: 499px) {
+  .seeMoreLink {
+    margin-right: 1rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .seeMoreText {
+    display: none;
+  }
+
+  .rightArrow svg {
+    stroke: #55AA29;
+    stroke-width: 30px;
+  }
+}

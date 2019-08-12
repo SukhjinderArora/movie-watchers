@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
 
+import HeaderWithLink from '../../components/HeaderWithLink/HeaderWithLink';
 import Carousel from '../../components/UI/Carousel/Carousel';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Card from '../../components/UI/Card/Card';
-import RightArrow from '../../components/UI/Icons/RightArrow';
 
 import placeholderImg from '../../assets/images/placeholder_img.png';
 
@@ -48,7 +47,7 @@ class Home extends Component {
 
   render() {
     if(this.props.loading) return <Spinner />;
-    const responsive = {
+    const responsiveCarousel = {
       0: { items: 3 },
       767: { items: 2 },
       1023: { items: 3 },
@@ -58,108 +57,60 @@ class Home extends Component {
     return (
       <div className={classes.Container}>
         <div>
-          <header>
-            <h2 className={classes.title}>Popular Movies</h2>
-            <Link to="/movies/popular">
-              <span>See More</span>
-              <span className={classes.rightArrow}><RightArrow height="15" width="15" color="#55AA29"/></span>
-            </Link>
-          </header>
+          <HeaderWithLink title="Popular Movies" link="/movies/popular"/>
           <Carousel
             title="Popular Movies"
             data={this.transformData(this.props.popularMovies)}
-            responsive={responsive} />
+            responsive={responsiveCarousel} />
         </div>
         <div>
-          <header>
-            <h2 className={classes.title}>Popular Shows</h2>
-            <Link to="/tv/popular">
-              <span>See More</span>
-              <span className={classes.rightArrow}><RightArrow height="15" width="15" color="#55AA29" /></span>
-            </Link>
-          </header>
+          <HeaderWithLink title="Popular Shows" link="/tv/popular" />
           <Carousel
             title="Popular Shows"
             data={this.transformData(this.props.popularTV)}
-            responsive={responsive} />
+            responsive={responsiveCarousel} />
         </div>
         <div>
-          <header>
-            <h2 className={classes.title}>Top Rated Movies</h2>
-            <Link to="/movies/topRated">
-              <span>See More</span>
-              <span className={classes.rightArrow}><RightArrow height="15" width="15" color="#55AA29" /></span>
-            </Link>
-          </header>
+          <HeaderWithLink title="Top Rated Movies" link="/movies/topRated" />
           <Carousel
             title="Top Rated Movies"
             data={this.transformData(this.props.topRatedMovies)}
-            responsive={responsive} />
+            responsive={responsiveCarousel} />
         </div>
         <div>
-          <header>
-            <h2 className={classes.title}>Top Rated Shows</h2>
-            <Link to="/tv/topRated">
-              <span>See More</span>
-              <span className={classes.rightArrow}><RightArrow height="15" width="15" color="#55AA29" /></span>
-            </Link>
-          </header>
+          <HeaderWithLink title="Top Rated Shows" link="/tv/topRated" />
           <Carousel
             title="Top Rated Shows"
             data={this.transformData(this.props.topRatedTV)}
-            responsive={responsive} />
+            responsive={responsiveCarousel} />
         </div>
         <div>
-          <header>
-            <h2 className={classes.title}>Now Playing Movies</h2>
-            <Link to="/movies/nowPlaying">
-              <span>See More</span>
-              <span className={classes.rightArrow}><RightArrow height="15" width="15" color="#55AA29" /></span>
-            </Link>
-          </header>
+          <HeaderWithLink title="Now Playing Movies" link="/movies/nowPlaying" />
           <Carousel
             title="Now Playing Movies"
             data={this.transformData(this.props.nowPlayingMovies)}
-            responsive={responsive} />
+            responsive={responsiveCarousel} />
         </div>
         <div>
-          <header>
-            <h2 className={classes.title}>On The Air Shows</h2>
-            <Link to="/tv/onAir">
-              <span>See More</span>
-              <span className={classes.rightArrow}><RightArrow height="15" width="15" color="#55AA29" /></span>
-            </Link>
-          </header>
+          <HeaderWithLink title="On The Air Shows" link="/tv/onAir" />
           <Carousel
             title="On The Air Shows"
             data={this.transformData(this.props.onTheAirTV)}
-            responsive={responsive} />          
+            responsive={responsiveCarousel} />          
         </div>
         <div>
-          <header>
-            <h2 className={classes.title}>Upcoming Movies</h2>
-            <Link to="/movies/upcoming">
-              <span>See More</span>
-              <span className={classes.rightArrow}><RightArrow height="15" width="15" color="#55AA29" /></span>
-            </Link>
-          </header>
+          <HeaderWithLink title="Upcoming Movies" link="/movies/upcoming" />
           <Carousel
             title="Upcoming Movies"
             data={this.transformData(this.props.upcomingMovies)}
-            responsive={responsive} />
+            responsive={responsiveCarousel} />
         </div>
         <div>
-          <header>
-            <h2 className={classes.title}>Airing Today</h2>
-            <Link to="/tv/onAirToday">
-              <span>See More</span>
-              <span className={classes.rightArrow}><RightArrow height="15" width="15" color="#55AA29" /></span>
-            </Link>
-          </header>
+          <HeaderWithLink title="Airing Today" link="/tv/onAirToday" />
           <Carousel 
             title="Airing Today" 
             data={this.transformData(this.props.onTheAirTodayTV)} 
-            responsive={responsive}/>
+            responsive={responsiveCarousel}/>
         </div>
       </div>
     );
