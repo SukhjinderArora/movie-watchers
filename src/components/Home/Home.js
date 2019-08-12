@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import HeaderWithLink from '../../components/HeaderWithLink/HeaderWithLink';
-import Carousel from '../../components/UI/Carousel/Carousel';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import Card from '../../components/UI/Card/Card';
+import HeaderWithLink from '../HeaderWithLink/HeaderWithLink';
+import Carousel from '../UI/Carousel/Carousel';
+import Spinner from '../UI/Spinner/Spinner';
+import Card from '../UI/Card/Card';
 
 import placeholderImg from '../../assets/images/placeholder_img.png';
 

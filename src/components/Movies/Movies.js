@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 
-import * as tvAction from '../../store/actions/tvAction';
+import * as moviesAction from '../../store/actions/moviesAction';
 
-import HeaderWithGenreList from '../../components/HeaderWithGenreList/HeaderWithGenreList';
-import Grid from '../../components/UI/Grid/Grid';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import HeaderWithGenreList from '../HeaderWithGenreList/HeaderWithGenreList';
+import Grid from '../UI/Grid/Grid';
+import Spinner from '../UI/Spinner/Spinner';
+import classes from './Movies.module.css';
 
-import classes from './TV.module.css';
-
-class TV extends Component {
+class Movies extends Component {
   state = {
     hasMore: true,
-    selectedGenre: '',
+    selectedGenre: ''
   };
 
   onCardClickHandler = (path) => {
@@ -24,18 +23,18 @@ class TV extends Component {
     this.setState({
       hasMore: this.props.data.page <= this.props.data.total_pages,
     });
-    switch (this.props.type) {
-      case 'popularTV':
-        this.props.getPopularTV(this.state.selectedGenre);
+    switch(this.props.type) {
+      case 'popularMovies':
+        this.props.getPopularMovies(this.state.selectedGenre);
         break;
-      case 'topRatedTV':
-        this.props.getTopRatedTV(this.state.selectedGenre);
+      case 'topRatedMovies':
+        this.props.getTopRatedMovies(this.state.selectedGenre);
         break;
-      case 'onTheAirTV':
-        this.props.getOnAirTV(this.state.selectedGenre);
+      case 'upcomingMovies':
+        this.props.getUpcomingMovies(this.state.selectedGenre);
         break;
-      case 'onTheAirTodayTV':
-        this.props.getAiringToday(this.state.selectedGenre);
+      case 'nowPlayingMovies':
+        this.props.getNowPlayingMovies(this.state.selectedGenre);
         break;
       default:
         return;
@@ -54,7 +53,7 @@ class TV extends Component {
     if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 700)) {
       this.loadData();
     }
-  };
+  }
 
   constructor(props) {
     super(props);
@@ -64,8 +63,8 @@ class TV extends Component {
   componentDidMount() {
     window.scrollTo(0, 0)
     window.addEventListener('scroll', this.debouncedFunction);
-    if (!this.props.genres) {
-      this.props.getTVGenres();
+    if(!this.props.genres) {
+      this.props.getMovieGenres();
     }
     this.props.clearData();
     this.loadData();
@@ -76,7 +75,7 @@ class TV extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.selectedGenre !== this.state.selectedGenre) {
+    if(prevState.selectedGenre !== this.state.selectedGenre) {
       this.props.clearData();
       this.loadData();
     }
@@ -90,7 +89,7 @@ class TV extends Component {
 
   render() {
     const { data } = this.props;
-    const { genres } = this.props;
+    const { genres } = this.props; 
     let components;
     if (data.results.length === 0 && data.total_results === -1) {
       components = <Spinner />;
@@ -100,39 +99,40 @@ class TV extends Component {
       components = (
         <>
           <Grid data={data.results} onClickHandler={this.onCardClickHandler}/>
-          {this.props.data.page < this.props.data.total_pages ? <Spinner /> : null }
+          {this.props.data.page < this.props.data.total_pages ? <Spinner /> : null}
         </>
       );
     }
+
     return (
-      <div className={classes.TVContainer}>
-        <HeaderWithGenreList
-          title={this.props.title}
-          genreList={genres}
-          selectedGenre={this.state.selectedGenre}
-          onSelectChangeHandler={this.onSelectChangeHandler} />
-        {components}
-      </div>
+        <div className={classes.MoviesContainer}>
+          <HeaderWithGenreList 
+            title={this.props.title} 
+            genreList={genres} 
+            selectedGenre={this.state.selectedGenre}
+            onSelectChangeHandler={this.onSelectChangeHandler} />
+          {components}
+        </div>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    data: state.tv[ownProps.type],
-    genres: state.tv.genres
+    data: state.movies[ownProps.type],
+    genres: state.movies.genres
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPopularTV: (genre) => dispatch(tvAction.getPopularTV(genre)),
-    getTopRatedTV: (genre) => dispatch(tvAction.getTopRatedTV(genre)),
-    getOnAirTV: (genre) => dispatch(tvAction.getOnTheAirTV(genre)),
-    getAiringToday: (genre) => dispatch(tvAction.getOnTheAirTodayTV(genre)),
-    getTVGenres: () => dispatch(tvAction.getTVGenres()),
-    clearData: () => dispatch(tvAction.resetTVData()),
-  }
-};
+    getPopularMovies: (genre) => dispatch(moviesAction.getPopularMovies(genre)),
+    getTopRatedMovies: (genre) => dispatch(moviesAction.getTopRatedMovies(genre)),
+    getUpcomingMovies: (genre) => dispatch(moviesAction.getUpcomingMovies(genre)),
+    getNowPlayingMovies: (genre) => dispatch(moviesAction.getNowPlayingMovies(genre)),
+    getMovieGenres: () => dispatch(moviesAction.getMovieGenres()),
+    clearData: () => dispatch(moviesAction.resetMovieData())
+  };
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(TV);
+export default connect(mapStateToProps, mapDispatchToProps)(Movies);

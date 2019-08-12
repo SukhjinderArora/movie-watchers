@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import { getShowDetails, resetTVData } from '../../../store/actions/tvAction';
 
-import MediaInfo from '../../../components/MediaInfo/MediaInfo';
-import Spinner from '../../../components/UI/Spinner/Spinner';
+import MediaInfo from '../../MediaInfo/MediaInfo';
+import Spinner from '../../UI/Spinner/Spinner';
 
 class TVInfo extends Component {
 

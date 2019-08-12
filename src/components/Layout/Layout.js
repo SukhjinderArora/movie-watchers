@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
-import Navbar from '../../components/Navigation/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
-import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import Toolbar from '../Navigation/Toolbar/Toolbar';
+import Navbar from '../Navigation/Navbar/Navbar';
+import Footer from '../Footer/Footer';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
 import classes from './Layout.module.css';
 

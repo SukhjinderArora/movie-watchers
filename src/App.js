@@ -5,13 +5,13 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { getMovieGenres } from './store/actions/moviesAction';
 import { getTVGenres } from './store/actions/tvAction';
 
-import Layout from './containers/Layout/Layout';
-import Home from './containers/Home/Home';
-import Search from './containers/Search/Search';
-import Movies from './containers/Movies/Movies';
-import MovieInfo from './containers/Movies/MovieInfo/MovieInfo';
-import TV from './containers/TV/TV';
-import TVInfo from './containers/TV/TVInfo/TVInfo';
+import Layout from './components/Layout/Layout';
+import Home from './components/Home/Home';
+import Search from './components/Search/Search';
+import Movies from './components/Movies/Movies';
+import MovieInfo from './components/Movies/MovieInfo/MovieInfo';
+import TV from './components/TV/TV';
+import TVInfo from './components/TV/TVInfo/TVInfo';
 import NotFound from './components/NotFound/NotFound';
 
 class App extends Component {
