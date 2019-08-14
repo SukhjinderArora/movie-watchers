@@ -87,7 +87,7 @@ export const getMovieDetails = (movieId) => {
   const path = `/movie/${movieId};`
   return dispatch => {
     const queryParameters = {
-      append_to_response: 'credits,videos,recommendations'
+      append_to_response: 'credits,videos,reviews,recommendations'
     };
     dispatch(getDataAsync(path, actionTypes.GET_MOVIE_DETAILS, queryParameters ))
   };

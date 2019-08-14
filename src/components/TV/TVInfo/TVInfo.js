@@ -47,6 +47,7 @@ class TVInfo extends Component {
       cast: tv.credits.cast,
       videoKey: tvTrailer[0] ? tvTrailer[0].key : null,
       recommendations: tv.recommendations.results,
+      reviews: tv.reviews.results,
       other: [
         { name: 'Tagline', value: tv.tagline },
         { name: 'Genre', value: tv.genres.map(genre => genre.name).join(', ') },

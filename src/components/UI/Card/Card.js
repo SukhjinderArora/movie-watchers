@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import Image from '../Image/Image';
 import starRatingIcon from '../../../assets/images/star.svg';
@@ -7,9 +7,15 @@ import starRatingIcon from '../../../assets/images/star.svg';
 import classes from './Card.module.css';
 
 const Card = (props) => {
-  let releaseDate, path, regex = /[^a-zA-Z0-9-_.]/g;
+  let releaseDate, path, title, regex = /[^a-zA-Z0-9-_.]/g;
   const { data } = props;
+  
+  const onCardClickHandler = () => {
+    props.history.push(path);
+  };
+  
   if (data.hasOwnProperty('release_date')) {
+    title = data.title;
     releaseDate = (
       <>
         <span>Release Date:</span>
@@ -18,6 +24,7 @@ const Card = (props) => {
     );
     path = `/movies/${data.title.replace(regex, '-')}/${data.id}`;
   } else {
+    title = data.name;
     releaseDate = (
       <>
         <span>First air date:</span>
@@ -28,10 +35,10 @@ const Card = (props) => {
   }
 
   return (
-    <div className={classes.Card} onDragStart={props.onDragStart} onClick={() => props.onCardClickHandler(path)}>
+    <div className={classes.Card} onDragStart={props.onDragStart} onClick={onCardClickHandler}>
       <Image imgUrl={props.imgUrl} alt="Poster" />
       <div className={classes.Content}>
-        <h1 className={classes.Title}>{data.title ? data.title : data.name}</h1>
+        <h1 className={classes.Title}>{title}</h1>
         <div>
           <p className={classes.Rating}>
             <span>Rating:</span>
@@ -50,4 +57,4 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default withRouter(Card);

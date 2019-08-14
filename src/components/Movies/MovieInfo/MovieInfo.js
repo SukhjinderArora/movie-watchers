@@ -47,6 +47,7 @@ class MovieInfo extends Component {
       cast: movie.credits.cast,
       videoKey: movieTrailer[0] ? movieTrailer[0].key : null,
       recommendations: movie.recommendations.results,
+      reviews: movie.reviews.results,
       other: [
         { name: 'Tagline', value: movie.tagline },
         { name: 'Genre', value: movie.genres.map(genre => genre.name).join(', ') },

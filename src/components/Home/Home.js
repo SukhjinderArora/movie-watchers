@@ -16,24 +16,14 @@ import classes from './Home.module.css';
 
 class Home extends Component {
 
-  onCardClickHandler = (path) => {
-    this.props.history.push(path);
-  };
-
   transformData = (data) => {
     const newData = data.slice(0, 19);
     return newData.map(dataItem => {
-      let imageUrl;
-      if (!dataItem.poster_path) {
-        imageUrl = placeholderImg;
-      } else {
-          imageUrl = `${base_img_url}w300/${dataItem.poster_path}`;
-      }
+      const imageUrl = dataItem.poster_path ? `${base_img_url}w300/${dataItem.poster_path}` : placeholderImg;
       return <Card
         imgUrl={imageUrl}
         key={dataItem.id}
         onDragStart={(e) => e.preventDefault()}
-        onCardClickHandler={this.onCardClickHandler}
         data={dataItem} />
     });
   };
