@@ -2,7 +2,6 @@
   position: relative;
   width: 30rem;
   height: 45rem;
-  /* margin-right: 2rem; */
   overflow: hidden;
   cursor: pointer;
 }
@@ -22,13 +21,13 @@
   width: 100%;
   border-radius: 1rem;
   background: rgba(0, 0, 0, 0);
-  height: 0;
   opacity: 0;
-  transition: height .4s, opacity .7s, background .7s;
+  transform: translateY(-100%);
+  transition: transform .4s, opacity .7s, background .7s;
 }
 
 .Card:hover .Content {
-  height: 100%;
+  transform: translateY(0);
   opacity: 1;
   background: rgba(0, 0, 0, .7);
 }
