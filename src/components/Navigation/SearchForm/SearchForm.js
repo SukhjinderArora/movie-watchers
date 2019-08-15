@@ -5,7 +5,7 @@ import SearchButton from '../../UI/SearchButton/SearchButton';
 import classes from './SearchForm.module.css';
 
 const SearchForm = (props) => {
-  const [ searchInput, setSearchInput] = useState('');
+  const [ searchInput, setSearchInput ] = useState('');
   const onInputChangeHandler = (e) => {
     setSearchInput(e.target.value);
   };

@@ -1,0 +1,43 @@
+.Modal {
+  height: 90%;
+  width: 80%;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+  overflow-y: scroll;
+}
+
+.HideModal {
+  /* display: none; */
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ShowModal {
+  /* display: block; */
+  opacity: 1;
+  visibility: visible;
+}
+
+.ModalCloseButton {
+  background: 0;
+  border: 0;
+  position: absolute;
+  right: 0;
+  font-size: 20px;
+  padding: .5rem 1rem;
+  cursor: pointer;
+}
+
+.ModalCloseButton:hover {
+  color: #55AA29;
+}
+
+@media (max-width: 500px) {
+  .Modal {
+    width: 90%;
+  }
+}

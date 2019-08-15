@@ -6,28 +6,19 @@
   line-height: 2;
 }
 
-.review {
-  background: #efefef9c;
-  padding: 1.5rem 2rem;
-  margin-bottom: 2rem;
+.showMoreButton {
+  background: transparent;
+  border: 1px solid #55AA29;
+  color: #55AA29;
+  padding: 1rem 2rem;
+  /* margin: 0 auto; */
+  display: block;
+  margin-top: 2rem;
+  transition: background .3s;
+  cursor: pointer;
 }
 
-.author {
-  display: flex;
-  align-items: center;
-}
-
-.authorImage {
-  width: 32px;
-  margin-right: 1rem;
-}
-
-.content {
-  margin-top: 1rem;
-}
-
-.paragraph {
-  font-size: 1.6rem;
-  line-height: 2.5rem;
-  text-align: justify;
+.showMoreButton:hover {
+  background: #55AA29;
+  color: #fff;
 }

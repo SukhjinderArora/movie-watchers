@@ -1,0 +1,31 @@
+.review {
+  background: #efefef9c;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  min-height: 100%;
+}
+
+.review:last-of-type {
+  margin-bottom: 0;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+}
+
+.authorImage {
+  width: 32px;
+  margin-right: 1rem;
+}
+
+.content {
+  margin-top: 1rem;
+}
+
+.paragraph {
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+  text-align: justify;
+  word-wrap: break-word;
+}
