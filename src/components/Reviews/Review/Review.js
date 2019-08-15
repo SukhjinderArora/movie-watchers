@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import user from '../../../assets/images/user.png';
 
@@ -6,14 +7,6 @@ import classes from './Review.module.css';
 
 const Review = ({ review, children }) => {
   if(!review.content) return null;
-  const paragraphs = review.content.split(/\s\s/gi);
-  const paragraphsJSX = paragraphs.map(paragraph => (
-    <p className={classes.paragraph} key={review.id + paragraph.length + Math.random()}>
-      {paragraph}
-      <br />
-    </p>
-    ));
-
   return (
     <div className={classes.review}>
       <div className={classes.author}>
@@ -21,8 +14,8 @@ const Review = ({ review, children }) => {
         <h2 className={classes.authorName}>{review.author}</h2>
       </div>
       <div className={classes.content}>
-          {paragraphsJSX}
-          {children}
+        <ReactMarkdown source={review.content} className={classes.paragraph}/>
+        {children}
       </div>
     </div>
   );
