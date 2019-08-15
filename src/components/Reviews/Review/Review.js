@@ -14,7 +14,7 @@ const Review = ({ review, children }) => {
         <h2 className={classes.authorName}>{review.author}</h2>
       </div>
       <div className={classes.content}>
-        <ReactMarkdown source={review.content} className={classes.paragraph}/>
+        <ReactMarkdown source={review.content} className={classes.paragraph} linkTarget={() => '_blank'}/>
         {children}
       </div>
     </div>
