@@ -3,8 +3,9 @@
 ## About
 MovieWatchers is an app in which you can:
 * Search for movies and TV shows.
-* List the popular movies and TV shows.
-* List the toprated movies and TV shows.
+* Get ratings and reviews of movies and TV shows by TMDB users.
+* Get the list of popular movies and TV shows.
+* Get the list of  toprated movies and TV shows.
 * Get the list of all the upcoming movies
 * Get the list of movies that are in the cinemas right now.
 * Get the list of on air TV shows.
