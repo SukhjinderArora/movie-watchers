@@ -13,8 +13,7 @@ const Card = (props) => {
   const onCardClickHandler = () => {
     props.history.push(path);
   };
-  console.log(data)
-  
+    
   if (data.hasOwnProperty('release_date') || data.media_type === 'movie') {
     title = data.title;
     releaseDate = (
