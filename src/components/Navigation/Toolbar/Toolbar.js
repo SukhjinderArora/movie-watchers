@@ -1,15 +1,14 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from "react";
 
-import ToggleButton from '../ToggleButton/ToggleButton';
-import Logo from '../../Logo/Logo';
-import SearchButton from '../../UI/SearchButton/SearchButton';
+import ToggleButton from "../ToggleButton/ToggleButton";
+import Logo from "../../Logo/Logo";
+import SearchButton from "../../UI/SearchButton/SearchButton";
 
-import classes from './Toolbar.module.css';
+import classes from "./Toolbar.module.css";
 
 const Toolbar = (props) => {
   const onSearchButtonClickHandler = () => {
-    props.history.push('/search');
+    props.history.push("/search");
   };
   return (
     <header className={classes.Toolbar}>
@@ -19,9 +18,14 @@ const Toolbar = (props) => {
       <div className={classes.Logo}>
         <Logo />
       </div>
-      <SearchButton color="#55AA29" width="18" height="18" onClickHandler={onSearchButtonClickHandler} />
+      <SearchButton
+        color="#55AA29"
+        width="18"
+        height="18"
+        onClickHandler={onSearchButtonClickHandler}
+      />
     </header>
   );
 };
 
-export default withRouter(Toolbar);
+export default Toolbar;

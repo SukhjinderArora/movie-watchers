@@ -1,20 +1,25 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import Image from '../Image/Image';
-import starRatingIcon from '../../../assets/images/star.svg';
+import Image from "../Image/Image";
+import starRatingIcon from "../../../assets/images/star.svg";
 
-import classes from './Card.module.css';
+import classes from "./Card.module.css";
 
 const Card = (props) => {
-  let releaseDate, path, title, regex = /[^a-zA-Z0-9-_.]/g;
+  const navigate = useNavigate();
+  let releaseDate,
+    path,
+    title,
+    regex = /[^a-zA-Z0-9-_.]/g;
   const { data } = props;
-  
+
   const onCardClickHandler = () => {
-    props.history.push(path);
+    // props.history.push(path);
+    navigate(path);
   };
-    
-  if (data.hasOwnProperty('release_date') || data.media_type === 'movie') {
+
+  if (data.hasOwnProperty("release_date") || data.media_type === "movie") {
     title = data.title;
     releaseDate = (
       <>
@@ -22,7 +27,7 @@ const Card = (props) => {
         <span>{data.release_date}</span>
       </>
     );
-    path = `/movies/${data.title.replace(regex, '-')}/${data.id}`;
+    path = `/movies/${data.title.replace(regex, "-")}/${data.id}`;
   } else {
     title = data.name;
     releaseDate = (
@@ -31,11 +36,15 @@ const Card = (props) => {
         <span>{data.first_air_date}</span>
       </>
     );
-    path = `/tv/${data.name.replace(regex, '-')}/${data.id}`;
+    path = `/tv/${data.name.replace(regex, "-")}/${data.id}`;
   }
 
   return (
-    <div className={classes.Card} onDragStart={props.onDragStart} onClick={onCardClickHandler}>
+    <div
+      className={classes.Card}
+      onDragStart={props.onDragStart}
+      onClick={onCardClickHandler}
+    >
       <Image imgUrl={props.imgUrl} alt="Poster" />
       <div className={classes.Content}>
         <h1 className={classes.Title}>{title}</h1>
@@ -44,17 +53,21 @@ const Card = (props) => {
             <span>Rating:</span>
             <span>
               <span>{data.vote_average}/10</span>
-              <img src={starRatingIcon} alt="Rating icon" className={classes.RatingIcon} />
+              <img
+                src={starRatingIcon}
+                alt="Rating icon"
+                className={classes.RatingIcon}
+              />
             </span>
           </p>
-          <p className={classes.ReleaseDate}>
-            {releaseDate}
-          </p>
-          <Link to={path} className={classes.DetailBtn}>Details</Link>
+          <p className={classes.ReleaseDate}>{releaseDate}</p>
+          <Link to={path} className={classes.DetailBtn}>
+            Details
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default withRouter(Card);
+export default Card;

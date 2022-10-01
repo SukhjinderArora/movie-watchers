@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { Outlet } from "react-router-dom";
 
-import Toolbar from '../Navigation/Toolbar/Toolbar';
-import Navbar from '../Navigation/Navbar/Navbar';
-import Footer from '../Footer/Footer';
-import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import Toolbar from "../Navigation/Toolbar/Toolbar";
+import Navbar from "../Navigation/Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
 
-import classes from './Layout.module.css';
+import classes from "./Layout.module.css";
 
 class Layout extends Component {
   state = {
-    isSideDrawerOpen: false
+    isSideDrawerOpen: false,
   };
 
   onToggleButtonClickHandler = () => {
@@ -21,7 +21,7 @@ class Layout extends Component {
 
   sideDrawerCloseHandler = () => {
     this.setState({
-      isSideDrawerOpen: false
+      isSideDrawerOpen: false,
     });
   };
 
@@ -34,9 +34,12 @@ class Layout extends Component {
         <div className={classes.Navbar}>
           <Navbar />
         </div>
-        <SideDrawer open={this.state.isSideDrawerOpen} sideDrawerCloseHandler={this.sideDrawerCloseHandler}/>
+        <SideDrawer
+          open={this.state.isSideDrawerOpen}
+          sideDrawerCloseHandler={this.sideDrawerCloseHandler}
+        />
         <main className={classes.Content}>
-          {this.props.children}
+          <Outlet />
         </main>
         <Footer />
       </div>
@@ -44,4 +47,4 @@ class Layout extends Component {
   }
 }
 
-export default withRouter(Layout);
+export default Layout;

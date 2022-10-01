@@ -1,60 +1,84 @@
-import React from 'react';
+import React from "react";
 
-import NavigationItem from './NavigationItem/NavigationItem';
-import SubNavigationItem from './SubNavigationItem/SubNavigationItem';
-import classes from './NavigationItems.module.css';
+import NavigationItem from "./NavigationItem/NavigationItem";
+import SubNavigationItem from "./SubNavigationItem/SubNavigationItem";
+import classes from "./NavigationItems.module.css";
 
 const NavigationItems = (props) => {
   return (
     <ul className={classes.NavigationItems}>
-      <NavigationItem 
-        link="/movies" 
-        linkName="Movies" 
+      <NavigationItem
+        link="/movies"
+        linkName="Movies"
         menuItemClickHandler={props.menuItemClickHandler}
         mouseEnterHandler={() => props.mouseEnterHandler(1)}
-        mouseLeaveHandler={props.mouseLeaveHandler} >
-        <ul className={[classes.SubNavigationItems, (props.dropDownOpen && props.activeDropdown === 1) ? classes.Open : '' ].join(' ')}>
-          <SubNavigationItem 
-            link="/movies/popular" 
-            linkName="Popular" 
-            menuItemClickHandler={props.menuItemClickHandler}/>
-          <SubNavigationItem 
-            link="/movies/topRated" 
+        mouseLeaveHandler={props.mouseLeaveHandler}
+      >
+        <ul
+          className={[
+            classes.SubNavigationItems,
+            props.dropDownOpen && props.activeDropdown === 1
+              ? classes.Open
+              : "",
+          ].join(" ")}
+        >
+          <SubNavigationItem
+            link="/movies/popular"
+            linkName="Popular"
+            menuItemClickHandler={props.menuItemClickHandler}
+          />
+          <SubNavigationItem
+            link="/movies/top-rated"
             linkName="Top Rated"
-            menuItemClickHandler={props.menuItemClickHandler}/>
-          <SubNavigationItem 
-            link="/movies/upcoming" 
+            menuItemClickHandler={props.menuItemClickHandler}
+          />
+          <SubNavigationItem
+            link="/movies/upcoming"
             linkName="Upcoming"
-            menuItemClickHandler={props.menuItemClickHandler}/>
-          <SubNavigationItem 
-            link="/movies/nowPlaying" 
+            menuItemClickHandler={props.menuItemClickHandler}
+          />
+          <SubNavigationItem
+            link="/movies/now-playing"
             linkName="Now Playing"
-            menuItemClickHandler={props.menuItemClickHandler}/>
+            menuItemClickHandler={props.menuItemClickHandler}
+          />
         </ul>
       </NavigationItem>
-      <NavigationItem 
-        link="/tv" 
+      <NavigationItem
+        link="/tv"
         linkName="TV"
         menuItemClickHandler={props.menuItemClickHandler}
         mouseEnterHandler={() => props.mouseEnterHandler(2)}
-        mouseLeaveHandler={props.mouseLeaveHandler}>
-        <ul className={[classes.SubNavigationItems, (props.dropDownOpen && props.activeDropdown === 2) ? classes.Open : ''].join(' ')}>
-          <SubNavigationItem 
-            link="/tv/popular" 
-            linkName="Popular" 
-            menuItemClickHandler={props.menuItemClickHandler}/>
-          <SubNavigationItem 
-            link="/tv/topRated" 
-            linkName="Top Rated" 
-            menuItemClickHandler={props.menuItemClickHandler}/>
-          <SubNavigationItem 
-            link="/tv/onAir" 
-            linkName="On Air" 
-            menuItemClickHandler={props.menuItemClickHandler}/>
-          <SubNavigationItem 
-            link="/tv/onAirToday" 
-            linkName="On Air Today" 
-            menuItemClickHandler={props.menuItemClickHandler}/>
+        mouseLeaveHandler={props.mouseLeaveHandler}
+      >
+        <ul
+          className={[
+            classes.SubNavigationItems,
+            props.dropDownOpen && props.activeDropdown === 2
+              ? classes.Open
+              : "",
+          ].join(" ")}
+        >
+          <SubNavigationItem
+            link="/tv/popular"
+            linkName="Popular"
+            menuItemClickHandler={props.menuItemClickHandler}
+          />
+          <SubNavigationItem
+            link="/tv/top-rated"
+            linkName="Top Rated"
+            menuItemClickHandler={props.menuItemClickHandler}
+          />
+          <SubNavigationItem
+            link="/tv/on-air"
+            linkName="On Air"
+            menuItemClickHandler={props.menuItemClickHandler}
+          />
+          <SubNavigationItem
+            link="/tv/on-air-today"
+            linkName="On Air Today"
+            menuItemClickHandler={props.menuItemClickHandler}
+          />
         </ul>
       </NavigationItem>
     </ul>
@@ -66,7 +90,7 @@ NavigationItems.defaultProps = {
   mouseLeaveHandler: () => {},
   dropDownOpen: true,
   activeDropdown: 1,
-  menuItemClickHandler: () => {}
+  menuItemClickHandler: () => {},
 };
 
 export default NavigationItems;

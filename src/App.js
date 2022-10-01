@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'; 
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-import { getMovieGenres } from './store/actions/moviesAction';
-import { getTVGenres } from './store/actions/tvAction';
+import { getMovieGenres } from "./store/actions/moviesAction";
+import { getTVGenres } from "./store/actions/tvAction";
 
-import Layout from './components/Layout/Layout';
-import Home from './components/Home/Home';
-import Search from './components/Search/Search';
-import Movies from './components/Movies/Movies';
-import MovieInfo from './components/Movies/MovieInfo/MovieInfo';
-import TV from './components/TV/TV';
-import TVInfo from './components/TV/TVInfo/TVInfo';
-import NotFound from './components/NotFound/NotFound';
+import Layout from "./components/Layout/Layout";
+import Home from "./components/Home/Home";
+import Search from "./components/Search/Search";
+import Movies from "./components/Movies/Movies";
+import MovieInfo from "./components/Movies/MovieInfo/MovieInfo";
+import TV from "./components/TV/TV";
+import TVInfo from "./components/TV/TVInfo/TVInfo";
+import NotFound from "./components/NotFound/NotFound";
 
 class App extends Component {
   componentDidMount() {
@@ -22,68 +22,106 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Layout>
-          <Switch>
-            <Route
-              path="/movies/popular"
-              exact
-              key="popularMovies"
-              render={(props) => <Movies {...props} type="popularMovies" title="Popular Movies" />} />
-            <Route
-              path="/movies/topRated"
-              exact
-              key="topRatedMovies"
-              render={(props) => <Movies {...props} type="topRatedMovies" title="Top Rated Movies" />} />
-            <Route
-              path="/movies/upcoming"
-              exact
-              key="upcomingMovies"
-              render={(props) => <Movies {...props} type="upcomingMovies" title="Upcoming Movies" />} />
-            <Route
-              path="/movies/nowPlaying"
-              exact
-              key="nowPlayingMovies"
-              render={(props) => <Movies {...props} type="nowPlayingMovies" title="Now Playing" />} />
-            <Route path="/movies/:title/:id" exact component={MovieInfo} />
-            <Redirect from="/movies" to="/movies/popular"/>
-            <Route
-              path="/tv/popular"
-              exact
-              key="popularTV"
-              render={(props) => <TV {...props} type="popularTV" title="Popular Shows" />} />
-            <Route
-              path="/tv/topRated"
-              exact
-              key="topRatedTV"
-              render={(props) => <TV {...props} type="topRatedTV" title="Top Rated Shows" />} />
-            <Route
-              path="/tv/onAir"
-              exact
-              key="onTheAirTV"
-              render={(props) => <TV {...props} type="onTheAirTV" title="On Air Shows" />} />
-            <Route
-              path="/tv/onAirToday"
-              exact
-              key="onTheAirTodayTV"
-              render={(props) => <TV {...props} type="onTheAirTodayTV" title="Airing Today" />} />
-            <Route path="/tv/:title/:id" exact component={TVInfo} />
-            <Redirect from="/tv" to="/tv/popular" />
-            <Route path="/search" component={Search} />
-            <Route path="/" exact component={Home} />
-            <Route component={NotFound} />
-          </Switch>
-        </Layout>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="movies">
+              <Route index element={<Navigate to="popular" />} />
+              <Route
+                path="popular"
+                element={
+                  <Movies
+                    title="Popular Movies"
+                    type="popularMovies"
+                    key="popularMovies"
+                  />
+                }
+              />
+              <Route
+                path="top-rated"
+                element={
+                  <Movies
+                    title="Top Rated Movies"
+                    type="topRatedMovies"
+                    key="topRatesMovies"
+                  />
+                }
+              />
+              <Route
+                path="upcoming"
+                element={
+                  <Movies
+                    type="upcomingMovies"
+                    title="Upcoming Movies"
+                    key="upcomingMovies"
+                  />
+                }
+              />
+              <Route
+                path="now-playing"
+                element={
+                  <Movies
+                    type="nowPlayingMovies"
+                    title="Now Playing"
+                    key="nowPlayingMovies"
+                  />
+                }
+              />
+              <Route path=":title/:id" element={<MovieInfo />} />
+            </Route>
+            <Route path="tv">
+              <Route index element={<Navigate to="popular" />} />
+              <Route
+                path="popular"
+                element={
+                  <TV
+                    type="popularTV"
+                    title="Popular Shows"
+                    key="popularShows"
+                  />
+                }
+              />
+              <Route
+                path="top-rated"
+                element={
+                  <TV
+                    type="topRatedTV"
+                    title="Top Rated Shows"
+                    key="topRatedShows"
+                  />
+                }
+              />
+              <Route
+                path="on-air"
+                element={
+                  <TV type="onTheAirTV" title="On Air Shows" key="onAirShows" />
+                }
+              />
+              <Route
+                path="on-air-today"
+                element={
+                  <TV
+                    type="onTheAirTodayTV"
+                    title="Airing Today"
+                    key="airingToday"
+                  />
+                }
+              />
+              <Route path=":title/:id" element={<TVInfo />} />
+            </Route>
+            <Route path="search" element={<Search />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    // getConfig: () => dispatch(configActions.getConfigAsync()),
     getMovieGenres: () => dispatch(getMovieGenres()),
-    getTVGenres: () => dispatch(getTVGenres())
-    // getTVGenres: () => dispatch(genreActions.getTVGenresAsync()),
-  }
+    getTVGenres: () => dispatch(getTVGenres()),
+  };
 };
 export default connect(null, mapDispatchToProps)(App);

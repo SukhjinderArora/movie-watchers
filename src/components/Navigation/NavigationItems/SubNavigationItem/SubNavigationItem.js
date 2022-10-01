@@ -1,15 +1,20 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-import * as classes from './SubNavigationItem.module.css';
+import classes from "./SubNavigationItem.module.css";
 
 const SubNavigationItem = (props) => {
   return (
-    <li className={classes.SubNavigationItem} onClick={props.menuItemClickHandler}>
+    <li
+      className={classes.SubNavigationItem}
+      onClick={props.menuItemClickHandler}
+    >
       <NavLink
         to={props.link}
-        className={classes.NavLink}
-        activeClassName={classes.active}>
+        className={({ isActive }) =>
+          isActive ? `${classes.NavLink} ${classes.active}` : classes.NavLink
+        }
+      >
         {props.linkName}
       </NavLink>
     </li>
