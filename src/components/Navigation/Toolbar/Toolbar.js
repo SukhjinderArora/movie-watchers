@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import ToggleButton from "../ToggleButton/ToggleButton";
 import Logo from "../../Logo/Logo";
@@ -7,8 +8,9 @@ import SearchButton from "../../UI/SearchButton/SearchButton";
 import classes from "./Toolbar.module.css";
 
 const Toolbar = (props) => {
+  const navigate = useNavigate();
   const onSearchButtonClickHandler = () => {
-    props.history.push("/search");
+    navigate("/search");
   };
   return (
     <header className={classes.Toolbar}>
