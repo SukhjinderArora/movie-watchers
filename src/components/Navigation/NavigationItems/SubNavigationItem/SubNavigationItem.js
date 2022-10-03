@@ -11,6 +11,7 @@ const SubNavigationItem = (props) => {
     >
       <NavLink
         to={props.link}
+        end
         className={({ isActive }) =>
           isActive ? `${classes.NavLink} ${classes.active}` : classes.NavLink
         }
